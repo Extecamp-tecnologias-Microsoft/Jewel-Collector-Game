@@ -3,7 +3,7 @@
 public class Jewel
 {
 private string positionJewel; //Nome da classe
-private int red = 100;
+private int red = 100; // Variavel
 private int green = 50;
 private int blue = 10;
 public string PositionJewel { get => positionJewel; set => positionJewel = value; } //Propriedade da classe
