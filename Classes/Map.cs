@@ -23,6 +23,10 @@ public class Map
         {
             arrayObj[i, j] = obstacle;
         }
+        else if (obj is Player player)
+        {
+            arrayObj[i, j] = player;
+        }
     }
 
     public void PrintMap()
@@ -44,6 +48,10 @@ public class Map
                 else if (arrayObj[i, j] is Obstacle obstacle)
                 {
                     Console.Write(obstacle.obstacle);
+                }
+                else if (arrayObj[i, j] is Player player)
+                {
+                    Console.Write(player.Name);
                 }
             }
             Console.WriteLine();
