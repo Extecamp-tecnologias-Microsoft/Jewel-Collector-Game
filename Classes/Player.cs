@@ -21,25 +21,36 @@ public class Player
         return $"Name {this.Name}";
     }
 
-    public void moveToLeft()
+    public void moveToLeft(Map map)
     {
-        Map map = new Map(10, 10);
         if (this.getColunaPlayer() > 0)
         {
             map.removeCell(getLinhaPlayer(), getColunaPlayer());
             map.setCell(getLinhaPlayer(), getColunaPlayer() - 1, this);
         }
     }
-    public void moveToRight()
+    public void moveToRight(Map map)
     {
-
+        if (this.getColunaPlayer() < map.getNumberOfColunas())
+        {
+            map.removeCell(getLinhaPlayer(), getColunaPlayer());
+            map.setCell(getLinhaPlayer(), getColunaPlayer() + 1, this);
+        }
     }
-    public void moveToTop()
+    public void moveToTop(Map map)
     {
-
+        if (this.getLinhaPlayer() > 0)
+        {
+            map.removeCell(getLinhaPlayer(), getColunaPlayer());
+            map.setCell(getLinhaPlayer() - 1, getColunaPlayer(), this);
+        }
     }
-    public void moveToBottom()
+    public void moveToBottom(Map map)
     {
-
+        if (this.getLinhaPlayer() < map.getNumberOfLinhas())
+        {
+            map.removeCell(getLinhaPlayer(), getColunaPlayer());
+            map.setCell(getLinhaPlayer() + 1, getColunaPlayer(), this);
+        }
     }
 }
