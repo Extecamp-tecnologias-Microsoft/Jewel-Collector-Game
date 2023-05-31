@@ -53,4 +53,9 @@ public class Player
             map.setCell(getLinhaPlayer() + 1, getColunaPlayer(), this);
         }
     }
+    public Boolean existsJewellOrObstacle(int proximaCasa)
+    {
+        // TO DO
+        return false;
+    }
 }
