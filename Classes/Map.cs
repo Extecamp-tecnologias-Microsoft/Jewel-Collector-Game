@@ -15,6 +15,10 @@ public class Map
         this.coluna = height;
         arrayObj = new Object[width, height];
     }
+    public Object getObject(int linha, int coluna)
+    {
+        return arrayObj[linha, coluna];
+    }
     public void setCell(int i, int j, Object obj)
     {
         if (obj is Jewell jewell)
@@ -48,15 +52,15 @@ public class Map
                 }
                 else if (arrayObj[i, j] is Jewell jewell)
                 {
-                    Console.Write(jewell.Name);
+                    Console.Write(jewell.getName());
                 }
                 else if (arrayObj[i, j] is Obstacle obstacle)
                 {
-                    Console.Write(obstacle.obstacle);
+                    Console.Write(obstacle.getSymbol());
                 }
                 else if (arrayObj[i, j] is Player player)
                 {
-                    Console.Write(player.Name);
+                    Console.Write(player.getName());
                 }
             }
             Console.WriteLine();

@@ -1,12 +1,22 @@
 namespace JewellNS;
 public class Jewell
 {
-    public string Name { get; set; }
-    public string Color { get; set; }
-    public int Point { get; set; }
+    private string name;
+    private string color;
+    private int point;
+
+    public Jewell(string color, string name, int point)
+    {
+        this.name = name;
+        this.color = color;
+        this.point = point;
+    }
+    public string getName() { return this.name; }
+    public string getColor() { return this.color; }
+    public int getPoint() { return this.point; }
 
     public string toString()
     {
-        return $"Cor: {this.Color}, Point: {this.Point}, Name: {this.Name}";
+        return $"Cor: {this.color}, Point: {this.point}, Name: {this.name}";
     }
 }
