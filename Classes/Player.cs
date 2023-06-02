@@ -26,9 +26,17 @@ public class Player
 
     public string toString()
     {
-        return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue}";
+        return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue} | Energy: {this.energy}";
     }
-
+    public void verifyEnergyLevel()
+    {
+        Console.Clear();
+        if (getEnergy() <= 0)
+        {
+            Console.WriteLine("Suas energias acabaram");
+            Environment.Exit(0);
+        }
+    }
     public void moveToLeft(Map map)
     {
         if (this.getColunaPlayer() > 0)
@@ -38,6 +46,7 @@ public class Player
                 energy--;
                 map.removeCell(getLinhaPlayer(), getColunaPlayer());
                 map.setCell(getLinhaPlayer(), getColunaPlayer() - 1, this);
+                verifyEnergyLevel();
             }
         }
     }
@@ -50,6 +59,7 @@ public class Player
                 energy--;
                 map.removeCell(getLinhaPlayer(), getColunaPlayer());
                 map.setCell(getLinhaPlayer(), getColunaPlayer() + 1, this);
+                verifyEnergyLevel();
             }
         }
     }
@@ -62,6 +72,7 @@ public class Player
                 energy--;
                 map.removeCell(getLinhaPlayer(), getColunaPlayer());
                 map.setCell(getLinhaPlayer() - 1, getColunaPlayer(), this);
+                verifyEnergyLevel();
             }
         }
     }
@@ -74,6 +85,7 @@ public class Player
                 energy--;
                 map.removeCell(getLinhaPlayer(), getColunaPlayer());
                 map.setCell(getLinhaPlayer() + 1, getColunaPlayer(), this);
+                verifyEnergyLevel();
             }
         }
     }
