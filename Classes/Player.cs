@@ -99,29 +99,33 @@ public class Player
         return false;
     }
 
-    public void captureJewell(Map map)
+    public void captureItem(Map map)
     {
         map.FindPlayerPosition();
         int linhaDoJogador = getLinhaPlayer();
         int colunaDoJogador = getColunaPlayer();
 
-        if (map.getObject(linhaDoJogador + 1, colunaDoJogador) is Jewell)
+        if (map.getObject(linhaDoJogador + 1, colunaDoJogador) is Jewell or Obstacle)
         {
+            updateEnergy(map.getObject(linhaDoJogador + 1, colunaDoJogador));
             updateBag(map.getObject(linhaDoJogador + 1, colunaDoJogador));
             map.removeCell(linhaDoJogador + 1, colunaDoJogador);
         }
-        else if (map.getObject(linhaDoJogador - 1, colunaDoJogador) is Jewell)
+        else if (map.getObject(linhaDoJogador - 1, colunaDoJogador) is Jewell or Obstacle)
         {
+            updateEnergy(map.getObject(linhaDoJogador - 1, colunaDoJogador));
             updateBag(map.getObject(linhaDoJogador - 1, colunaDoJogador));
             map.removeCell(linhaDoJogador - 1, colunaDoJogador);
         }
-        else if (map.getObject(linhaDoJogador, colunaDoJogador + 1) is Jewell)
+        else if (map.getObject(linhaDoJogador, colunaDoJogador + 1) is Jewell or Obstacle)
         {
+            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador + 1));
             updateBag(map.getObject(linhaDoJogador, colunaDoJogador + 1));
             map.removeCell(linhaDoJogador, colunaDoJogador + 1);
         }
-        else if (map.getObject(linhaDoJogador, colunaDoJogador - 1) is Jewell)
+        else if (map.getObject(linhaDoJogador, colunaDoJogador - 1) is Jewell or Obstacle)
         {
+            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador - 1));
             updateBag(map.getObject(linhaDoJogador, colunaDoJogador - 1));
             map.removeCell(linhaDoJogador, colunaDoJogador - 1);
         }
@@ -136,4 +140,18 @@ public class Player
             bagItems[bagItems.Length - 1] = jewell;
         }
     }
+
+    public void updateEnergy(Object objeto)
+    {
+        if (objeto is Jewell jewell)
+            {
+                Console.WriteLine(jewell.getLevelEnergy());
+                energy = energy + jewell.getLevelEnergy();
+            }
+        else if(objeto is Obstacle Obstacle){
+                Console.WriteLine(Obstacle.getLevelEnergy());
+                energy = energy + Obstacle.getLevelEnergy();
+        }
+    }
+    
 }

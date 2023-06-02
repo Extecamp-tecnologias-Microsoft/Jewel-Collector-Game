@@ -4,11 +4,11 @@ public class JewelCollector
     public static void Main(string[] args)
     {
         Map map = new Map(10, 10);
-        Jewell jr = new Jewell("red", " JR ", 100);
-        Jewell jg = new Jewell("green", " JG ", 50);
-        Jewell jb = new Jewell("blue", " JB ", 10);
-        Obstacle water = new Obstacle("water", " ## ");
-        Obstacle tree = new Obstacle("tree", " $$ ");
+        Jewell jr = new Jewell("red", " JR ", 100, 0);
+        Jewell jg = new Jewell("green", " JG ", 50, 0 );
+        Jewell jb = new Jewell("blue", " JB ", 10, 5);
+        Obstacle water = new Obstacle("water", " ## ", 0);
+        Obstacle tree = new Obstacle("tree", " $$ ", 3);
         Player player = new Player(" ME ");
         map.setCell(0, 0, player);
         map.setCell(1, 9, jr);
@@ -24,6 +24,8 @@ public class JewelCollector
         map.setCell(5, 4, water);
         map.setCell(5, 5, water);
         map.setCell(5, 6, water);
+        map.setCell(1, 1, tree);
+
         map.setCell(5, 9, tree);
         map.setCell(3, 9, tree);
         map.setCell(8, 3, tree);
@@ -43,8 +45,9 @@ public class JewelCollector
             Console.WriteLine("Enter the command: ");
             string command = Console.ReadLine()!;
 
-            if (command.Equals("quit"))
+            if (command.Equals("quit") || command.Equals("exit") || command.Equals("sair"))
             {
+                Console.WriteLine("O jogo foi encerrado :c");
                 running = false;
             }
             else if (command.Equals("w"))
@@ -104,7 +107,7 @@ public class JewelCollector
                 try
                 {
                     map.FindPlayerPosition();
-                    player.captureJewell(map);
+                    player.captureItem(map);
                     map.PrintMap();
                 }
                 catch
