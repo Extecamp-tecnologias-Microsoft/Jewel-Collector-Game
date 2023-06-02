@@ -104,30 +104,31 @@ public class Player
         map.FindPlayerPosition();
         int linhaDoJogador = getLinhaPlayer();
         int colunaDoJogador = getColunaPlayer();
+        int captureRange = 1;
 
-        if (map.getObject(linhaDoJogador + 1, colunaDoJogador) is Jewell or Obstacle)
+        if (map.getObject(linhaDoJogador + captureRange, colunaDoJogador) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador + 1, colunaDoJogador));
-            updateBag(map.getObject(linhaDoJogador + 1, colunaDoJogador));
-            map.removeCell(linhaDoJogador + 1, colunaDoJogador);
+            updateEnergy(map.getObject(linhaDoJogador + captureRange, colunaDoJogador));
+            updateBag(map.getObject(linhaDoJogador + captureRange, colunaDoJogador));
+            map.removeCell(linhaDoJogador + captureRange, colunaDoJogador);
         }
-        else if (map.getObject(linhaDoJogador - 1, colunaDoJogador) is Jewell or Obstacle)
+        else if (map.getObject(linhaDoJogador - captureRange, colunaDoJogador) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador - 1, colunaDoJogador));
-            updateBag(map.getObject(linhaDoJogador - 1, colunaDoJogador));
-            map.removeCell(linhaDoJogador - 1, colunaDoJogador);
+            updateEnergy(map.getObject(linhaDoJogador - captureRange, colunaDoJogador));
+            updateBag(map.getObject(linhaDoJogador - captureRange, colunaDoJogador));
+            map.removeCell(linhaDoJogador - captureRange, colunaDoJogador);
         }
-        else if (map.getObject(linhaDoJogador, colunaDoJogador + 1) is Jewell or Obstacle)
+        else if (map.getObject(linhaDoJogador, colunaDoJogador + captureRange) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador + 1));
-            updateBag(map.getObject(linhaDoJogador, colunaDoJogador + 1));
-            map.removeCell(linhaDoJogador, colunaDoJogador + 1);
+            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador + captureRange));
+            updateBag(map.getObject(linhaDoJogador, colunaDoJogador + captureRange));
+            map.removeCell(linhaDoJogador, colunaDoJogador + captureRange);
         }
-        else if (map.getObject(linhaDoJogador, colunaDoJogador - 1) is Jewell or Obstacle)
+        else if (map.getObject(linhaDoJogador, colunaDoJogador - captureRange) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador - 1));
-            updateBag(map.getObject(linhaDoJogador, colunaDoJogador - 1));
-            map.removeCell(linhaDoJogador, colunaDoJogador - 1);
+            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador - captureRange));
+            updateBag(map.getObject(linhaDoJogador, colunaDoJogador - captureRange));
+            map.removeCell(linhaDoJogador, colunaDoJogador - captureRange);
         }
     }
 
