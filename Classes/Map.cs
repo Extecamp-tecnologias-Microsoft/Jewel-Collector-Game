@@ -74,8 +74,8 @@ public class Map
             {
                 if (arrayObj[i, j] is Player player)
                 {
-                    player.setLinhaPlayer(i);
-                    player.setColunaPlayer(j);
+                    player.setplayerLine(i);
+                    player.setplayerColumn(j);
                 }
             }
         }
