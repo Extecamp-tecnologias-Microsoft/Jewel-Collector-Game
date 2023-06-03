@@ -1,78 +1,68 @@
 namespace JewellNS;
-public class Player
+public class Robot : Cell
 {
+    private Cell[] bagItems = new Cell[] { };
     private int bagValue = 0;
-    private int energy = 5;
-    private Object[] bagItems = new Object[] { };
-    private string name;
-    private int playerLine;
-    private int playerColumn;
-    public Player(string name) { this.name = name; }
-    public string getName() { return this.name; }
-    public int getEnergy() { return this.energy; }
-    public int getPlayerLine() { return this.playerLine; }
-    public int getColumnPlayer() { return this.playerColumn; }
-    public void setplayerLine(int linha) { this.playerLine = linha; }
-    public void setplayerColumn(int coluna) { this.playerColumn = coluna; }
+    private int RobotLine;
+    private int RobotColumn;
+    public int getRobotLine() { return this.RobotLine; }
+    public int getColumnRobot() { return this.RobotColumn; }
+    public void setRobotLine(int linha) { this.RobotLine = linha; }
+    public void setColumnRobot(int coluna) { this.RobotColumn = coluna; }
 
-    public string toString() { return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue} | Energy: {this.energy}"; }
-    public void verifyEnergyLevel()
+    public string toString()
     {
-        Console.Clear();
-        if (getEnergy() <= 0)
-        {
-            Console.WriteLine("Suas energias acabaram");
-            Environment.Exit(0);
-        }
+        return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue} | Energy: {this.LevelEnergy}";
     }
+
     public void moveToLeft(Map map)
     {
-        if (this.getColumnPlayer() > 0)
+        if (this.getColumnRobot() > 0)
         {
-            if (map.getObject(getPlayerLine(), getColumnPlayer() - 1) is not Jewell or Obstacle)
+            if (map.getCell(getRobotLine(), getColumnRobot() - 1) is not Jewell or Obstacle)
             {
-                energy--;
-                map.removeCell(getPlayerLine(), getColumnPlayer());
-                map.setCell(getPlayerLine(), getColumnPlayer() - 1, this);
+                LevelEnergy--;
+                map.removeCell(getRobotLine(), getColumnRobot());
+                map.setCell(getRobotLine(), getColumnRobot() - 1, this);
                 verifyEnergyLevel();
             }
         }
     }
     public void moveToRight(Map map)
     {
-        if (this.getColumnPlayer() <= map.getNumberOfColunas())
+        if (this.getColumnRobot() <= map.getNumberOfColunas())
         {
-            if (map.getObject(getPlayerLine(), getColumnPlayer() + 1) is not Jewell or Obstacle)
+            if (map.getCell(getRobotLine(), getColumnRobot() + 1) is not Jewell or Obstacle)
             {
-                energy--;
-                map.removeCell(getPlayerLine(), getColumnPlayer());
-                map.setCell(getPlayerLine(), getColumnPlayer() + 1, this);
+                LevelEnergy--;
+                map.removeCell(getRobotLine(), getColumnRobot());
+                map.setCell(getRobotLine(), getColumnRobot() + 1, this);
                 verifyEnergyLevel();
             }
         }
     }
     public void moveToTop(Map map)
     {
-        if (this.getPlayerLine() > 0)
+        if (this.getRobotLine() > 0)
         {
-            if (map.getObject(getPlayerLine() - 1, getColumnPlayer()) is not Jewell or Obstacle)
+            if (map.getCell(getRobotLine() - 1, getColumnRobot()) is not Jewell or Obstacle)
             {
-                energy--;
-                map.removeCell(getPlayerLine(), getColumnPlayer());
-                map.setCell(getPlayerLine() - 1, getColumnPlayer(), this);
+                LevelEnergy--;
+                map.removeCell(getRobotLine(), getColumnRobot());
+                map.setCell(getRobotLine() - 1, getColumnRobot(), this);
                 verifyEnergyLevel();
             }
         }
     }
     public void moveToBottom(Map map)
     {
-        if (this.getPlayerLine() <= map.getNumberOfLinhas())
+        if (this.getRobotLine() <= map.getNumberOfLinhas())
         {
-            if (map.getObject(getPlayerLine() + 1, getColumnPlayer()) is not Jewell or Obstacle)
+            if (map.getCell(getRobotLine() + 1, getColumnRobot()) is not Jewell or Obstacle)
             {
-                energy--;
-                map.removeCell(getPlayerLine(), getColumnPlayer());
-                map.setCell(getPlayerLine() + 1, getColumnPlayer(), this);
+                LevelEnergy--;
+                map.removeCell(getRobotLine(), getColumnRobot());
+                map.setCell(getRobotLine() + 1, getColumnRobot(), this);
                 verifyEnergyLevel();
             }
         }
@@ -80,56 +70,49 @@ public class Player
 
     public void captureItem(Map map)
     {
-        map.FindPlayerPosition();
-        int linhaDoJogador = getPlayerLine();
-        int colunaDoJogador = getColumnPlayer();
+        map.FindRobotPosition();
+        int linhaDoJogador = getRobotLine();
+        int colunaDoJogador = getColumnRobot();
         int captureRange = 1;
 
-        if (map.getObject(linhaDoJogador + captureRange, colunaDoJogador) is Jewell or Obstacle)
+        if (map.getCell(linhaDoJogador + captureRange, colunaDoJogador) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador + captureRange, colunaDoJogador));
-            updateBag(map.getObject(linhaDoJogador + captureRange, colunaDoJogador));
+            updateBag(map.getCell(linhaDoJogador + captureRange, colunaDoJogador));
             map.removeCell(linhaDoJogador + captureRange, colunaDoJogador);
         }
-        else if (map.getObject(linhaDoJogador - captureRange, colunaDoJogador) is Jewell or Obstacle)
+        else if (map.getCell(linhaDoJogador - captureRange, colunaDoJogador) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador - captureRange, colunaDoJogador));
-            updateBag(map.getObject(linhaDoJogador - captureRange, colunaDoJogador));
+            updateBag(map.getCell(linhaDoJogador - captureRange, colunaDoJogador));
             map.removeCell(linhaDoJogador - captureRange, colunaDoJogador);
         }
-        else if (map.getObject(linhaDoJogador, colunaDoJogador + captureRange) is Jewell or Obstacle)
+        else if (map.getCell(linhaDoJogador, colunaDoJogador + captureRange) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador + captureRange));
-            updateBag(map.getObject(linhaDoJogador, colunaDoJogador + captureRange));
+            updateBag(map.getCell(linhaDoJogador, colunaDoJogador + captureRange));
             map.removeCell(linhaDoJogador, colunaDoJogador + captureRange);
         }
-        else if (map.getObject(linhaDoJogador, colunaDoJogador - captureRange) is Jewell or Obstacle)
+        else if (map.getCell(linhaDoJogador, colunaDoJogador - captureRange) is Jewell or Obstacle)
         {
-            updateEnergy(map.getObject(linhaDoJogador, colunaDoJogador - captureRange));
-            updateBag(map.getObject(linhaDoJogador, colunaDoJogador - captureRange));
+            updateBag(map.getCell(linhaDoJogador, colunaDoJogador - captureRange));
             map.removeCell(linhaDoJogador, colunaDoJogador - captureRange);
         }
     }
 
-    private void updateBag(Object objeto)
+    private void updateBag(Cell objeto)
     {
         if (objeto is Jewell jewell)
         {
-            this.bagValue = this.bagValue + jewell.getPoint();
+            this.bagValue = this.bagValue + jewell.Point;
             Array.Resize(ref bagItems, bagItems.Length + 1);
             bagItems[bagItems.Length - 1] = jewell;
         }
     }
-
-    private void updateEnergy(Object objeto)
+    private void verifyEnergyLevel()
     {
-        if (objeto is Jewell jewell)
+        Console.Clear();
+        if (LevelEnergy <= 0)
         {
-            energy = energy + jewell.getLevelEnergy();
-        }
-        else if (objeto is Obstacle Obstacle)
-        {
-            energy = energy + Obstacle.getLevelEnergy();
+            Console.WriteLine("Suas energias acabaram");
+            Environment.Exit(0);
         }
     }
 }
