@@ -75,7 +75,7 @@ public class Map
                 if (arrayObj[i, j] is Robot Robot)
                 {
                     Robot.setRobotLine(i);
-                    Robot.setColumnRobot(j);
+                    Robot.setRobotColumn(j);
                 }
             }
         }

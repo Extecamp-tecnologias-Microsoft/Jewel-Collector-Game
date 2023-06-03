@@ -109,7 +109,7 @@ public class JewelCollector
                 }
                 catch
                 {
-                    Console.WriteLine("Não existe joia ao redor");
+                    Console.WriteLine("Não existe joia ou arvore ao redor");
                 }
             }
         } while (running);
