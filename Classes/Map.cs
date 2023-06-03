@@ -2,7 +2,7 @@ namespace JewellNS;
 
 public class Map
 {
-    private Object[,] arrayObj;
+    private Cell[,] arrayObj;
     private int linha;
     private int coluna;
 
@@ -13,13 +13,13 @@ public class Map
     {
         this.linha = width;
         this.coluna = height;
-        arrayObj = new Object[width, height];
+        arrayObj = new Cell[width, height];
     }
-    public Object getObject(int linha, int coluna)
+    public Cell getCell(int linha, int coluna)
     {
         return arrayObj[linha, coluna];
     }
-    public void setCell(int i, int j, Object obj)
+    public void setCell(int i, int j, Cell obj)
     {
         if (obj is Jewell jewell)
         {
@@ -29,9 +29,9 @@ public class Map
         {
             arrayObj[i, j] = obstacle;
         }
-        else if (obj is Player player)
+        else if (obj is Robot Robot)
         {
-            arrayObj[i, j] = player;
+            arrayObj[i, j] = Robot;
         }
     }
     public void removeCell(int i, int j)
@@ -52,30 +52,30 @@ public class Map
                 }
                 else if (arrayObj[i, j] is Jewell jewell)
                 {
-                    Console.Write(jewell.getName());
+                    Console.Write(jewell.Symbol);
                 }
                 else if (arrayObj[i, j] is Obstacle obstacle)
                 {
-                    Console.Write(obstacle.getSymbol());
+                    Console.Write(obstacle.Symbol);
                 }
-                else if (arrayObj[i, j] is Player player)
+                else if (arrayObj[i, j] is Robot Robot)
                 {
-                    Console.Write(player.getName());
+                    Console.Write(Robot.Symbol);
                 }
             }
             Console.WriteLine();
         }
     }
-    public void FindPlayerPosition()
+    public void FindRobotPosition()
     {
         for (int i = 0; i < linha; i++)
         {
             for (int j = 0; j < coluna; j++)
             {
-                if (arrayObj[i, j] is Player player)
+                if (arrayObj[i, j] is Robot Robot)
                 {
-                    player.setplayerLine(i);
-                    player.setplayerColumn(j);
+                    Robot.setRobotLine(i);
+                    Robot.setColumnRobot(j);
                 }
             }
         }
