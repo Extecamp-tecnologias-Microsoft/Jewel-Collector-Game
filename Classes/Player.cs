@@ -7,27 +7,15 @@ public class Player
     private string name;
     private int playerLine;
     private int playerColumn;
-    public Player(string name)
-    {
-        this.name = name;
-    }
+    public Player(string name) { this.name = name; }
     public string getName() { return this.name; }
     public int getEnergy() { return this.energy; }
     public int getPlayerLine() { return this.playerLine; }
     public int getColumnPlayer() { return this.playerColumn; }
-    public void setplayerLine(int linha)
-    {
-        this.playerLine = linha;
-    }
-    public void setplayerColumn(int coluna)
-    {
-        this.playerColumn = coluna;
-    }
+    public void setplayerLine(int linha) { this.playerLine = linha; }
+    public void setplayerColumn(int coluna) { this.playerColumn = coluna; }
 
-    public string toString()
-    {
-        return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue} | Energy: {this.energy}";
-    }
+    public string toString() { return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue} | Energy: {this.energy}"; }
     public void verifyEnergyLevel()
     {
         Console.Clear();
@@ -41,7 +29,7 @@ public class Player
     {
         if (this.getColumnPlayer() > 0)
         {
-            if (existsJewellOrObstacle(getPlayerLine(), getColumnPlayer() - 1, map) == false)
+            if (map.getObject(getPlayerLine(), getColumnPlayer() - 1) is not Jewell or Obstacle)
             {
                 energy--;
                 map.removeCell(getPlayerLine(), getColumnPlayer());
@@ -54,7 +42,7 @@ public class Player
     {
         if (this.getColumnPlayer() <= map.getNumberOfColunas())
         {
-            if (existsJewellOrObstacle(getPlayerLine(), getColumnPlayer() + 1, map) == false)
+            if (map.getObject(getPlayerLine(), getColumnPlayer() + 1) is not Jewell or Obstacle)
             {
                 energy--;
                 map.removeCell(getPlayerLine(), getColumnPlayer());
@@ -67,7 +55,7 @@ public class Player
     {
         if (this.getPlayerLine() > 0)
         {
-            if (existsJewellOrObstacle(getPlayerLine() - 1, getColumnPlayer(), map) == false)
+            if (map.getObject(getPlayerLine() - 1, getColumnPlayer()) is not Jewell or Obstacle)
             {
                 energy--;
                 map.removeCell(getPlayerLine(), getColumnPlayer());
@@ -80,7 +68,7 @@ public class Player
     {
         if (this.getPlayerLine() <= map.getNumberOfLinhas())
         {
-            if (existsJewellOrObstacle(getPlayerLine() + 1, getColumnPlayer(), map) == false)
+            if (map.getObject(getPlayerLine() + 1, getColumnPlayer()) is not Jewell or Obstacle)
             {
                 energy--;
                 map.removeCell(getPlayerLine(), getColumnPlayer());
@@ -88,15 +76,6 @@ public class Player
                 verifyEnergyLevel();
             }
         }
-    }
-    public bool existsJewellOrObstacle(int proximaLinha, int proximaColuna, Map map)
-    {
-        Object posicao = map.getObject(proximaLinha, proximaColuna);
-        if (posicao is Jewell jewell || posicao is Obstacle obstacle)
-        {
-            return true;
-        }
-        return false;
     }
 
     public void captureItem(Map map)
@@ -132,7 +111,7 @@ public class Player
         }
     }
 
-    public void updateBag(Object objeto)
+    private void updateBag(Object objeto)
     {
         if (objeto is Jewell jewell)
         {
@@ -142,18 +121,15 @@ public class Player
         }
     }
 
-    public void updateEnergy(Object objeto)
+    private void updateEnergy(Object objeto)
     {
         if (objeto is Jewell jewell)
         {
-            Console.WriteLine(jewell.getLevelEnergy());
             energy = energy + jewell.getLevelEnergy();
         }
         else if (objeto is Obstacle Obstacle)
         {
-            Console.WriteLine(Obstacle.getLevelEnergy());
             energy = energy + Obstacle.getLevelEnergy();
         }
     }
-
 }
