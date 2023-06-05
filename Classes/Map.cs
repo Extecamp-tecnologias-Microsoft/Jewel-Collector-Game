@@ -1,5 +1,7 @@
 namespace JewellNS;
-
+/// <summary>
+/// Classe Map para adicionar/remover obstaculos e joias pelo mapa, além de definir a posição do Robot
+/// </summary>
 public class Map
 {
     private Cell[,] arrayObj;
