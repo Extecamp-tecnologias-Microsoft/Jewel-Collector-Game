@@ -17,6 +17,12 @@ public class Map
         this.coluna = height;
         arrayObj = new Cell[width, height];
     }
+    /// <summary>
+    /// getCell é responsavel por retornar o objeto que é contido através dos parametros enviados
+    /// </summary>
+    /// <param name="linha"> variavel que determina a linha da Cell</param>
+    /// <param name="coluna"> variavel que determina a coluna da Cell</param>
+    /// <returns> retorna o objeto da Cell</returns>
     public Cell getCell(int linha, int coluna)
     {
         return arrayObj[linha, coluna];
