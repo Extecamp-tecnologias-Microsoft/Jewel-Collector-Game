@@ -1,5 +1,7 @@
 namespace JewellNS;
-
+/// <summary>
+/// Classe Map para adicionar/remover obstaculos e joias pelo mapa, além de definir a posição do Robot
+/// </summary>
 public class Map
 {
   private Cell[,] arrayObj;
@@ -15,6 +17,8 @@ public class Map
   /// </summary>
   /// <param name="width">Parametro responsavel por definir a largura</param>
   /// <param name="height">Parametro responsavel por definir a altura</param>
+  /// </summary>
+
   public Map(int width, int height)
   {
     this.line = width;
@@ -22,15 +26,18 @@ public class Map
     arrayObj = new Cell[width, height];
   }
   /// <summary>
-  /// 
+  /// getCell é responsavel por retornar o objeto que é contido através dos parametros enviados
   /// </summary>
-  /// <param name="line"></param>
-  /// <param name="column"></param>
-  /// <returns></returns>
+  /// <param name="line"> variavel que determina a linha da Cell</param>
+  /// <param name="column"> variavel que determina a coluna da Cell</param>
+  /// <returns> retorna o objeto da Cell</returns>
+
   public Cell getCell(int line, int column)
   {
     return arrayObj[line, column];
+
   }
+
   public void setCell(int i, int j, Cell obj)
   {
     if (obj is Jewell jewell)
