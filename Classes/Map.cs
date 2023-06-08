@@ -7,10 +7,12 @@ public class Map
   private Cell[,] arrayObj;
   private int line;
   private int column;
-
+  private int numberItems;
+  public bool changeMap = false;
 
   public int getColumnsNumbers() { return this.column; }
   public int getLinesNumbers() { return this.line; }
+  public int getNumberItems() { return this.numberItems; }
   public Map() { }
   /// <summary>
   /// Map e responsavel por definir o tamanho do mapa
@@ -42,10 +44,14 @@ public class Map
   {
     if (obj is Jewell jewell)
     {
+      numberItems ++;
       arrayObj[i, j] = jewell;
     }
     else if (obj is Obstacle obstacle)
     {
+        if(obstacle.Name == "tree"){
+            numberItems ++;
+        }
       arrayObj[i, j] = obstacle;
     }
     else if (obj is Robot Robot)
@@ -59,7 +65,15 @@ public class Map
   }
   public void PrintMap()
   {
+    if(changeMap){
+        Console.WriteLine("teste");
+        // a partir daqui, será criado um novo mapa aleatorio
+        // map.makeRandomMap();
+        // return;
+    }
+    else{
     Console.Clear();
+    }
 
     for (int i = 0; i < line; i++)
     {

@@ -104,15 +104,21 @@ public class JewelCollector
         try
         {
           map.FindRobotPosition();
-          // Robot.captureItem(map);
           Robot.captureItem(map);
           map.PrintMap();
         }
         catch
         {
+          map.PrintMap();
           Console.WriteLine("Não existe joia ou arvore ao redor");
         }
       }
     } while (running);
+  }
+  public static void endPhase(int itemsOnMap){
+    // Console.WriteLine("teste");
+  }
+  public static void nextPhase(){
+
   }
 }
