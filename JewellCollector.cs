@@ -115,10 +115,4 @@ public class JewelCollector
       }
     } while (running);
   }
-  public static void endPhase(int itemsOnMap){
-    // Console.WriteLine("teste");
-  }
-  public static void nextPhase(){
-
-  }
 }
