@@ -1,4 +1,5 @@
 ﻿namespace JewellNS;
+// JewelCollector é o método responsavel por iniciar a aplicacao gerando o mapa e definindo a posição das joias e chamando os metodos responsaveis pelo movimento do personagem 
 public class JewelCollector
 {
     public static void Main(string[] args)
@@ -33,7 +34,7 @@ public class JewelCollector
         map.FindRobotPosition();
         Play(Robot, tree, water, jr, jb, jg, map);
     }
-
+// o que a inicia o jogo 
     public static void Play(Robot Robot, Obstacle tree, Obstacle water, Jewell jr, Jewell jb, Jewell jg, Map map)
     {
         bool running = true;

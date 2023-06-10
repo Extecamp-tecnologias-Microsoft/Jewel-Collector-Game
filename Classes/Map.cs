@@ -26,7 +26,7 @@ public class Map
     public Cell getCell(int linha, int coluna)
     {
         return arrayObj[linha, coluna];
-    }
+    }// setCell seta um novo objeto dentro da linha e coluna passada no parâmetro
     public void setCell(int i, int j, Cell obj)
     {
         if (obj is Jewell jewell)
@@ -45,7 +45,7 @@ public class Map
     public void removeCell(int i, int j)
     {
         arrayObj[i, j] = null;
-    }
+    }// PrintMap limpa o terminal e gera um mapa novo ?
     public void PrintMap()
     {
         Console.Clear();
@@ -73,7 +73,7 @@ public class Map
             }
             Console.WriteLine();
         }
-    }
+    }// encontra a posição de do robo para mostrar no mapa 
     public void FindRobotPosition()
     {
         for (int i = 0; i < linha; i++)

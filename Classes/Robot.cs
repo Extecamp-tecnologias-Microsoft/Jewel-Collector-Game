@@ -5,12 +5,14 @@ public class Robot : Cell
     private Cell[] bagItems = new Cell[] { };
     private int RobotLine;
     private int RobotColumn;
-    public int getRobotLine() { return this.RobotLine; }
-    public int getRobotColumn() { return this.RobotColumn; }
-    public void setRobotLine(int linha) { this.RobotLine = linha; }
+  // Metodo usado para retornar a linha do robo
+    public int getRobotLine() { return this.RobotLine; }  // Metodo usado para retornar a  coluna do robo
+    public int getRobotColumn() { return this.RobotColumn; }  // Metodo usado para setar a linha do robo 
+    public void setRobotLine(int linha) { this.RobotLine = linha; } // Metodo usado para setar a coluna do robo 
     public void setRobotColumn(int coluna) { this.RobotColumn = coluna; }
 
     public string toString() { return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue} | Energy: {this.LevelEnergy}"; }
+  // metodo responsável por verigicar se o robo ainda tem energia 
     public void verifyEnergyLevel()
     {
         Console.Clear();
