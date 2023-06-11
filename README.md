@@ -8,8 +8,7 @@ Desenvolva o minigame chamado Jewel Collector. O objetivo desse jogo é que um r
 É necessário que tenha em sua maquina .NET 7.0
 
 ## Como rodar
-Para iniciar o projeto, inicialmente e necessario fazer o build `dotnet build` assim que baixar a aplicacao e o `dotnet run` 
+Para iniciar o projeto, inicialmente e necessário fazer o Build `dotnet build` assim que baixar a aplicação e o `dotnet run` 
 
 ## documentação 
-A documentação doxygen pode ser encontrada dentro da pasta `Projeto Final 0990
-` mas tambem se econtra hospedada no gihub pages dentro destes dominio https://extecamp-tecnologias-microsoft.github.io/Jewel-Collector-Game/
+A documentação doxygen pode ser encontrada na pasta `Projeto Final 0990`, mas também se encontra hospedada no github pages dentro deste domínio https://extecamp-tecnologias-microsoft.github.io/Jewel-Collector-Game/
