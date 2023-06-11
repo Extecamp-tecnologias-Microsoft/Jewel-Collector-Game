@@ -1,6 +1,6 @@
 namespace JewellNS;
 /// <summary>
-/// A Classe Jewell herda todos os atributos de Cell 
+/// Classe responsavel pelas joias.
 /// </summary>
 public class Jewell : Cell
 {

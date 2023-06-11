@@ -1,0 +1,275 @@
+\doxysection{Jewell\+NS.\+Map Class Reference}
+\hypertarget{class_jewell_n_s_1_1_map}{}\label{class_jewell_n_s_1_1_map}\index{JewellNS.Map@{JewellNS.Map}}
+
+
+Classe responsavel por adicionar/remover obstaculos e joias pelo mapa, além de definir a posição do Robot.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_jewell_n_s_1_1_map_aec4a2e21337f7f330c0d736b04fb716d}{getphase1\+Completed}} ()
+\item 
+int \mbox{\hyperlink{class_jewell_n_s_1_1_map_ae55c7c4f12ee66f6fc189042685a8bf0}{get\+Columns\+Numbers}} ()
+\item 
+int \mbox{\hyperlink{class_jewell_n_s_1_1_map_a868997a08cee732d20e1645b5ccb4657}{get\+Lines\+Numbers}} ()
+\item 
+int \mbox{\hyperlink{class_jewell_n_s_1_1_map_a9b784ca83081088d7a25cefa3d72cb65}{get\+Number\+Items}} ()
+\item 
+\mbox{\hyperlink{class_jewell_n_s_1_1_map_aa440209eaf76c11bee5c594acf01750c}{Map}} ()
+\item 
+\mbox{\hyperlink{class_jewell_n_s_1_1_map_a05d9eaf9739a5bfb77cc806cacdebbd0}{Map}} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Map e responsavel por definir o tamanho do mapa. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}} \mbox{\hyperlink{class_jewell_n_s_1_1_map_a799f1df4611fa39545ff48eebc0bbec6}{get\+Cell}} (int line, int column)
+\begin{DoxyCompactList}\small\item\em get\+Cell é responsavel por retornar o objeto que é contido através dos parametros enviados \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_a2a7aac9a6dc3adfe5515cdb1420d01e1}{set\+Cell}} (int i, int j, \mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}} obj)
+\begin{DoxyCompactList}\small\item\em set\+Cell seta um novo objeto dentro da linha e coluna passada no parâmetro \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_ade98b1d5811e93ff2713e6ad24137fcd}{remove\+Cell}} (int i, int j)
+\begin{DoxyCompactList}\small\item\em remove\+Cell é responsavel por remover o objeto da celula \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_a7be7c0be139ecbdb9cc10319c314957a}{Print\+Map}} ()
+\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_a235a5774c47569f7d2cb6dca03c2bbcc}{Find\+Robot\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_a66d2eb1ad73980abadca02ac1ff8a894}{make\+Random\+Map}} (int number\+Items)
+\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_a723692fb0fa16b4437af622ab49fcf7d}{Add\+Object}} ()
+\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_ab38c1358cbc68cf745c2dc8495884f50}{print\+Random\+Map}} ()
+\item 
+void \mbox{\hyperlink{class_jewell_n_s_1_1_map_aa5c6b6f60f756d62090e27b264a953e7}{Print\+Object\+Locations}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_jewell_n_s_1_1_map_a37f0e1608d8cde531ec16e4a35e695a6}{change\+Map}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsavel por adicionar/remover obstaculos e joias pelo mapa, além de definir a posição do Robot. 
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00005}{5}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_jewell_n_s_1_1_map_aa440209eaf76c11bee5c594acf01750c}\label{class_jewell_n_s_1_1_map_aa440209eaf76c11bee5c594acf01750c} 
+\index{JewellNS.Map@{JewellNS.Map}!Map@{Map}}
+\index{Map@{Map}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Jewell\+NS.\+Map.\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00021}{21}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a05d9eaf9739a5bfb77cc806cacdebbd0}\label{class_jewell_n_s_1_1_map_a05d9eaf9739a5bfb77cc806cacdebbd0} 
+\index{JewellNS.Map@{JewellNS.Map}!Map@{Map}}
+\index{Map@{Map}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Jewell\+NS.\+Map.\+Map (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Map e responsavel por definir o tamanho do mapa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Parametro responsavel por definir a largura\\
+\hline
+{\em height} & Parametro responsavel por definir a altura\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00029}{29}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_jewell_n_s_1_1_map_a723692fb0fa16b4437af622ab49fcf7d}\label{class_jewell_n_s_1_1_map_a723692fb0fa16b4437af622ab49fcf7d} 
+\index{JewellNS.Map@{JewellNS.Map}!AddObject@{AddObject}}
+\index{AddObject@{AddObject}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{AddObject()}{AddObject()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+Add\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00154}{154}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a235a5774c47569f7d2cb6dca03c2bbcc}\label{class_jewell_n_s_1_1_map_a235a5774c47569f7d2cb6dca03c2bbcc} 
+\index{JewellNS.Map@{JewellNS.Map}!FindRobotPosition@{FindRobotPosition}}
+\index{FindRobotPosition@{FindRobotPosition}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{FindRobotPosition()}{FindRobotPosition()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+Find\+Robot\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00118}{118}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a799f1df4611fa39545ff48eebc0bbec6}\label{class_jewell_n_s_1_1_map_a799f1df4611fa39545ff48eebc0bbec6} 
+\index{JewellNS.Map@{JewellNS.Map}!getCell@{getCell}}
+\index{getCell@{getCell}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{getCell()}{getCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}} Jewell\+NS.\+Map.\+get\+Cell (\begin{DoxyParamCaption}\item[{int}]{line,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+
+
+get\+Cell é responsavel por retornar o objeto que é contido através dos parametros enviados 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & variavel que determina a linha da Cell\\
+\hline
+{\em column} & variavel que determina a coluna da Cell\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna o objeto da Cell
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00041}{41}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_ae55c7c4f12ee66f6fc189042685a8bf0}\label{class_jewell_n_s_1_1_map_ae55c7c4f12ee66f6fc189042685a8bf0} 
+\index{JewellNS.Map@{JewellNS.Map}!getColumnsNumbers@{getColumnsNumbers}}
+\index{getColumnsNumbers@{getColumnsNumbers}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{getColumnsNumbers()}{getColumnsNumbers()}}
+{\footnotesize\ttfamily int Jewell\+NS.\+Map.\+get\+Columns\+Numbers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a868997a08cee732d20e1645b5ccb4657}\label{class_jewell_n_s_1_1_map_a868997a08cee732d20e1645b5ccb4657} 
+\index{JewellNS.Map@{JewellNS.Map}!getLinesNumbers@{getLinesNumbers}}
+\index{getLinesNumbers@{getLinesNumbers}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{getLinesNumbers()}{getLinesNumbers()}}
+{\footnotesize\ttfamily int Jewell\+NS.\+Map.\+get\+Lines\+Numbers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a9b784ca83081088d7a25cefa3d72cb65}\label{class_jewell_n_s_1_1_map_a9b784ca83081088d7a25cefa3d72cb65} 
+\index{JewellNS.Map@{JewellNS.Map}!getNumberItems@{getNumberItems}}
+\index{getNumberItems@{getNumberItems}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{getNumberItems()}{getNumberItems()}}
+{\footnotesize\ttfamily int Jewell\+NS.\+Map.\+get\+Number\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00020}{20}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_aec4a2e21337f7f330c0d736b04fb716d}\label{class_jewell_n_s_1_1_map_aec4a2e21337f7f330c0d736b04fb716d} 
+\index{JewellNS.Map@{JewellNS.Map}!getphase1Completed@{getphase1Completed}}
+\index{getphase1Completed@{getphase1Completed}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{getphase1Completed()}{getphase1Completed()}}
+{\footnotesize\ttfamily bool Jewell\+NS.\+Map.\+getphase1\+Completed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00017}{17}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a66d2eb1ad73980abadca02ac1ff8a894}\label{class_jewell_n_s_1_1_map_a66d2eb1ad73980abadca02ac1ff8a894} 
+\index{JewellNS.Map@{JewellNS.Map}!makeRandomMap@{makeRandomMap}}
+\index{makeRandomMap@{makeRandomMap}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{makeRandomMap()}{makeRandomMap()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+make\+Random\+Map (\begin{DoxyParamCaption}\item[{int}]{number\+Items }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00133}{133}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a7be7c0be139ecbdb9cc10319c314957a}\label{class_jewell_n_s_1_1_map_a7be7c0be139ecbdb9cc10319c314957a} 
+\index{JewellNS.Map@{JewellNS.Map}!PrintMap@{PrintMap}}
+\index{PrintMap@{PrintMap}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{PrintMap()}{PrintMap()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+Print\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00083}{83}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_aa5c6b6f60f756d62090e27b264a953e7}\label{class_jewell_n_s_1_1_map_aa5c6b6f60f756d62090e27b264a953e7} 
+\index{JewellNS.Map@{JewellNS.Map}!PrintObjectLocations@{PrintObjectLocations}}
+\index{PrintObjectLocations@{PrintObjectLocations}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{PrintObjectLocations()}{PrintObjectLocations()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+Print\+Object\+Locations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00208}{208}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_ab38c1358cbc68cf745c2dc8495884f50}\label{class_jewell_n_s_1_1_map_ab38c1358cbc68cf745c2dc8495884f50} 
+\index{JewellNS.Map@{JewellNS.Map}!printRandomMap@{printRandomMap}}
+\index{printRandomMap@{printRandomMap}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{printRandomMap()}{printRandomMap()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+print\+Random\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00171}{171}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_ade98b1d5811e93ff2713e6ad24137fcd}\label{class_jewell_n_s_1_1_map_ade98b1d5811e93ff2713e6ad24137fcd} 
+\index{JewellNS.Map@{JewellNS.Map}!removeCell@{removeCell}}
+\index{removeCell@{removeCell}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{removeCell()}{removeCell()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+remove\+Cell (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+remove\+Cell é responsavel por remover o objeto da celula 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em j} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00079}{79}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+\Hypertarget{class_jewell_n_s_1_1_map_a2a7aac9a6dc3adfe5515cdb1420d01e1}\label{class_jewell_n_s_1_1_map_a2a7aac9a6dc3adfe5515cdb1420d01e1} 
+\index{JewellNS.Map@{JewellNS.Map}!setCell@{setCell}}
+\index{setCell@{setCell}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{setCell()}{setCell()}}
+{\footnotesize\ttfamily void Jewell\+NS.\+Map.\+set\+Cell (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}}}]{obj }\end{DoxyParamCaption})}
+
+
+
+set\+Cell seta um novo objeto dentro da linha e coluna passada no parâmetro 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Posicao Y\\
+\hline
+{\em j} & posicao X\\
+\hline
+{\em obj} & objeto contendo a celula do mapa\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00053}{53}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_jewell_n_s_1_1_map_a37f0e1608d8cde531ec16e4a35e695a6}\label{class_jewell_n_s_1_1_map_a37f0e1608d8cde531ec16e4a35e695a6} 
+\index{JewellNS.Map@{JewellNS.Map}!changeMap@{changeMap}}
+\index{changeMap@{changeMap}!JewellNS.Map@{JewellNS.Map}}
+\doxysubsubsection{\texorpdfstring{changeMap}{changeMap}}
+{\footnotesize\ttfamily bool Jewell\+NS.\+Map.\+change\+Map = false}
+
+
+
+Definition at line \mbox{\hyperlink{_map_8cs_source_l00011}{11}} of file \mbox{\hyperlink{_map_8cs_source}{Map.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Classes/\mbox{\hyperlink{_map_8cs}{Map.\+cs}}\end{DoxyCompactItemize}

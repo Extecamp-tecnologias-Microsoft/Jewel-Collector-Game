@@ -1,4 +1,7 @@
 namespace JewellNS;
+/// <summary>
+/// Classe responsável pelo robo, sua interação com o mapa e os itens.
+/// </summary>
 public class Robot : Cell
 {
   private int bagValue = 0;
@@ -111,8 +114,9 @@ public class Robot : Cell
       updateBag(map.getCell(playerLine, columnPlayer - captureRange));
       map.removeCell(playerLine, columnPlayer - captureRange);
     }
-    numbercapturedItems ++;
-    if(numbercapturedItems == itemsOnMap){
+    numbercapturedItems++;
+    if (numbercapturedItems == itemsOnMap)
+    {
       map.changeMap = true;
     }
   }
