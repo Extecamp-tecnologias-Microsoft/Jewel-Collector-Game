@@ -110,12 +110,12 @@ public class JewelCollector
         try
         {
           map.FindRobotPosition();
-          // Robot.captureItem(map);
           Robot.captureItem(map);
           map.PrintMap();
         }
         catch
         {
+          map.PrintMap();
           Console.WriteLine("Não existe joia ou arvore ao redor");
         }
       }
