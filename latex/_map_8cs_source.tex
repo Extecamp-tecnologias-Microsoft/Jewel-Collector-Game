@@ -1,0 +1,202 @@
+\doxysection{Map.\+cs}
+\hypertarget{_map_8cs_source}{}\label{_map_8cs_source}\index{Classes/Map.cs@{Classes/Map.cs}}
+\mbox{\hyperlink{_map_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00001}00001\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_jewell_n_s}{JewellNS}};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00005}\mbox{\hyperlink{class_jewell_n_s_1_1_map}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jewell_n_s_1_1_map}{Map}}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00007}00007\ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}}[,]\ arrayObj;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00008}00008\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ line;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00009}00009\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ column;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00010}00010\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ numberItems;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00011}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a37f0e1608d8cde531ec16e4a35e695a6}{00011}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a37f0e1608d8cde531ec16e4a35e695a6}{changeMap}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00012}00012\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ phase1Completed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00013}00013\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{char}[,]\ matrix;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00014}00014\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{char}[,]\ teste;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00015}00015\ \ \ \textcolor{keyword}{private}\ Random\ random;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00017}\mbox{\hyperlink{class_jewell_n_s_1_1_map_aec4a2e21337f7f330c0d736b04fb716d}{00017}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_aec4a2e21337f7f330c0d736b04fb716d}{getphase1Completed}}()\ \{\ \textcolor{keywordflow}{return}\ this.phase1Completed;\ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00018}\mbox{\hyperlink{class_jewell_n_s_1_1_map_ae55c7c4f12ee66f6fc189042685a8bf0}{00018}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_ae55c7c4f12ee66f6fc189042685a8bf0}{getColumnsNumbers}}()\ \{\ \textcolor{keywordflow}{return}\ this.column;\ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00019}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a868997a08cee732d20e1645b5ccb4657}{00019}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a868997a08cee732d20e1645b5ccb4657}{getLinesNumbers}}()\ \{\ \textcolor{keywordflow}{return}\ this.line;\ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00020}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a9b784ca83081088d7a25cefa3d72cb65}{00020}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a9b784ca83081088d7a25cefa3d72cb65}{getNumberItems}}()\ \{\ \textcolor{keywordflow}{return}\ this.numberItems;\ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00021}\mbox{\hyperlink{class_jewell_n_s_1_1_map_aa440209eaf76c11bee5c594acf01750c}{00021}}\ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_aa440209eaf76c11bee5c594acf01750c}{Map}}()\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00029}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a05d9eaf9739a5bfb77cc806cacdebbd0}{00029}}\ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a05d9eaf9739a5bfb77cc806cacdebbd0}{Map}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00030}00030\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00031}00031\ \ \ \ \ this.line\ =\ width;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00032}00032\ \ \ \ \ this.column\ =\ height;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00033}00033\ \ \ \ \ arrayObj\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}}[width,\ height];}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00034}00034\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00041}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a799f1df4611fa39545ff48eebc0bbec6}{00041}}\ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a799f1df4611fa39545ff48eebc0bbec6}{getCell}}(\textcolor{keywordtype}{int}\ line,\ \textcolor{keywordtype}{int}\ column)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00042}00042\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ arrayObj[line,\ column];}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00045}00045\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00053}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a2a7aac9a6dc3adfe5515cdb1420d01e1}{00053}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a2a7aac9a6dc3adfe5515cdb1420d01e1}{setCell}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \mbox{\hyperlink{class_jewell_n_s_1_1_cell}{Cell}}\ obj)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00054}00054\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ is\ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ jewell)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00057}00057\ \ \ \ \ \ \ numberItems++;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00058}00058\ \ \ \ \ \ \ arrayObj[i,\ j]\ =\ jewell;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (obj\ is\ \mbox{\hyperlink{class_jewell_n_s_1_1_obstacle}{Obstacle}}\ obstacle)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00062}00062\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obstacle.Name\ ==\ \textcolor{stringliteral}{"{}tree"{}})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00063}00063\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ numberItems++;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00065}00065\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00066}00066\ \ \ \ \ \ \ arrayObj[i,\ j]\ =\ obstacle;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (obj\ is\ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}}\ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00070}00070\ \ \ \ \ \ \ arrayObj[i,\ j]\ =\ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00072}00072\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00079}\mbox{\hyperlink{class_jewell_n_s_1_1_map_ade98b1d5811e93ff2713e6ad24137fcd}{00079}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_ade98b1d5811e93ff2713e6ad24137fcd}{removeCell}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00080}00080\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00081}00081\ \ \ \ \ arrayObj[i,\ j]\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00082}00082\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00083}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a7be7c0be139ecbdb9cc10319c314957a}{00083}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a7be7c0be139ecbdb9cc10319c314957a}{PrintMap}}()}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00084}00084\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_jewell_n_s_1_1_map_a37f0e1608d8cde531ec16e4a35e695a6}{changeMap}})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00087}00087\ \ \ \ \ \ \ this.phase1Completed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00088}00088\ \ \ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a66d2eb1ad73980abadca02ac1ff8a894}{makeRandomMap}}(this.numberItems);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00091}00091\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00092}00092\ \ \ \ \ \ \ Console.Clear();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00093}00093\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ line;\ i++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00094}00094\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ column;\ j++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (arrayObj[i,\ j]\ is\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(\textcolor{stringliteral}{"{}\ -\/-\/\ "{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (arrayObj[i,\ j]\ is\ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ jewell)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(jewell.Symbol);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (arrayObj[i,\ j]\ is\ \mbox{\hyperlink{class_jewell_n_s_1_1_obstacle}{Obstacle}}\ obstacle)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(obstacle.Symbol);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (arrayObj[i,\ j]\ is\ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}}\ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(\mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}}.\mbox{\hyperlink{class_jewell_n_s_1_1_cell_a642fb328caf22cca2e89c53814a68684}{Symbol}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ Console.WriteLine();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00115}00115\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00117}00117\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00118}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a235a5774c47569f7d2cb6dca03c2bbcc}{00118}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a235a5774c47569f7d2cb6dca03c2bbcc}{FindRobotPosition}}()}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00119}00119\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ line;\ i++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00121}00121\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00122}00122\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ column;\ j++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00123}00123\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (arrayObj[i,\ j]\ is\ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}}\ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}}.\mbox{\hyperlink{class_jewell_n_s_1_1_robot_a803bf64649d67977334eaf899bd68846}{setRobotLine}}(i);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_robot}{Robot}}.\mbox{\hyperlink{class_jewell_n_s_1_1_robot_af45db6736cf7c27281375f4cf40262a6}{setRobotColumn}}(j);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00129}00129\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00131}00131\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00133}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a66d2eb1ad73980abadca02ac1ff8a894}{00133}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a66d2eb1ad73980abadca02ac1ff8a894}{makeRandomMap}}(\textcolor{keywordtype}{int}\ numberItems)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00134}00134\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00135}00135\ \ \ \ \ Console.WriteLine(\textcolor{stringliteral}{"{}novo\ mapa\ aleatorio"{}},\ numberItems);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00136}00136\ \ \ \ \ this.line\ =\ numberItems;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00137}00137\ \ \ \ \ this.column\ =\ numberItems;}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00138}00138\ \ \ \ \ matrix\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[this.line,\ this.column];}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00139}00139\ \ \ \ \ random\ =\ \textcolor{keyword}{new}\ Random();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00140}00140\ \ \ \ \ initializeRandomMap();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00141}00141\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00143}00143\ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ initializeRandomMap()}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00144}00144\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.column;\ i++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00147}00147\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ this.line;\ j++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00148}00148\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ matrix[i,\ j]\ =\ \textcolor{charliteral}{'-\/'};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00150}00150\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00151}00151\ \ \ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_map_ab38c1358cbc68cf745c2dc8495884f50}{printRandomMap}}();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00153}00153\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00154}\mbox{\hyperlink{class_jewell_n_s_1_1_map_a723692fb0fa16b4437af622ab49fcf7d}{00154}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a723692fb0fa16b4437af622ab49fcf7d}{AddObject}}()}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00155}00155\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00156}00156\ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ jr\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ \{\ Name\ =\ \textcolor{stringliteral}{"{}red"{}},\ Symbol\ =\ \textcolor{stringliteral}{"{}\ JR\ "{}},\ Point\ =\ 100,\ LevelEnergy\ =\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00157}00157\ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ jg\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ \{\ Name\ =\ \textcolor{stringliteral}{"{}green"{}},\ Symbol\ =\ \textcolor{stringliteral}{"{}\ JG\ "{}},\ Point\ =\ 50,\ LevelEnergy\ =\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00158}00158\ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ jb\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_jewell_n_s_1_1_jewell}{Jewell}}\ \{\ Name\ =\ \textcolor{stringliteral}{"{}blue"{}},\ Symbol\ =\ \textcolor{stringliteral}{"{}\ JB\ "{}},\ Point\ =\ 10,\ LevelEnergy\ =\ 5\ \};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00159}00159\ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_obstacle}{Obstacle}}\ water\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_jewell_n_s_1_1_obstacle}{Obstacle}}\ \{\ Name\ =\ \textcolor{stringliteral}{"{}water"{}},\ Symbol\ =\ \textcolor{stringliteral}{"{}\ \#\#\ "{}},\ LevelEnergy\ =\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00160}00160\ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_obstacle}{Obstacle}}\ tree\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_jewell_n_s_1_1_obstacle}{Obstacle}}\ \{\ Name\ =\ \textcolor{stringliteral}{"{}tree"{}},\ Symbol\ =\ \textcolor{stringliteral}{"{}\ \$\$\ "{}},\ LevelEnergy\ =\ 3\ \};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00161}00161\ \ \ \ \ \textcolor{keywordtype}{string}[]\ listItem\ =\ \{\ jr.\mbox{\hyperlink{class_jewell_n_s_1_1_cell_a642fb328caf22cca2e89c53814a68684}{Symbol}},\ jg.\mbox{\hyperlink{class_jewell_n_s_1_1_cell_a642fb328caf22cca2e89c53814a68684}{Symbol}},\ jb.\mbox{\hyperlink{class_jewell_n_s_1_1_cell_a642fb328caf22cca2e89c53814a68684}{Symbol}},\ water.\mbox{\hyperlink{class_jewell_n_s_1_1_cell_a642fb328caf22cca2e89c53814a68684}{Symbol}},\ tree.Symbol\ \};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{double}\ i\ =\ 0;\ i\ <\ 0.1;\ i\ =\ i\ +\ 0.1)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00163}00163\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00164}00164\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ itemRandom\ =\ random.Next(0,\ listItem.Length);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00165}00165\ \ \ \ \ \ \ \textcolor{keywordtype}{char}[]\ chosedItem\ =\ listItem[itemRandom].ToCharArray();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00166}00166\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ random.Next(0,\ this.column);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00167}00167\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ random.Next(0,\ this.line);}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00168}00168\ \ \ \ \ \ \ matrix[x,\ y]\ =\ chosedItem[2];}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00169}00169\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00170}00170\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00171}\mbox{\hyperlink{class_jewell_n_s_1_1_map_ab38c1358cbc68cf745c2dc8495884f50}{00171}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_ab38c1358cbc68cf745c2dc8495884f50}{printRandomMap}}()}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00172}00172\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00173}00173\ \ \ \ \ Console.Clear();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.column;\ i++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00175}00175\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00176}00176\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ this.line;\ j++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00177}00177\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix[i,\ j]\ !=\ \textcolor{charliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (matrix[i,\ j])}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'R'}:}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(\textcolor{stringliteral}{"{}\ "{}}\ +\ \textcolor{stringliteral}{"{}JR"{}}\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'G'}:}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(\textcolor{stringliteral}{"{}\ "{}}\ +\ \textcolor{stringliteral}{"{}JG"{}}\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'B'}:}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(\textcolor{stringliteral}{"{}\ "{}}\ +\ \textcolor{stringliteral}{"{}JB"{}}\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\#'}:}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(\textcolor{stringliteral}{"{}\ "{}}\ +\ \textcolor{stringliteral}{"{}\#\#"{}}\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\$'}:}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Console.Write(\textcolor{stringliteral}{"{}\ "{}}\ +\ \textcolor{stringliteral}{"{}\$\$"{}}\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ Console.Write(\textcolor{stringliteral}{"{}\ "{}}\ +\ matrix[i,\ j]\ +\ matrix[i,\ j]\ +\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00203}00203\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00204}00204\ \ \ \ \ \ \ Console.WriteLine();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00205}00205\ \ \ \ \ \ \ \mbox{\hyperlink{class_jewell_n_s_1_1_map_a723692fb0fa16b4437af622ab49fcf7d}{AddObject}}();}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00206}00206\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00207}00207\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00208}\mbox{\hyperlink{class_jewell_n_s_1_1_map_aa5c6b6f60f756d62090e27b264a953e7}{00208}}\ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jewell_n_s_1_1_map_aa5c6b6f60f756d62090e27b264a953e7}{PrintObjectLocations}}()}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00209}00209\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00210}00210\ \ \ \ \ Console.WriteLine(\textcolor{stringliteral}{"{}Object\ Locations:"{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00211}00211\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ this.column;\ i++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00212}00212\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00213}00213\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ this.line;\ j++)}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00214}00214\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix[i,\ j]\ !=\ \textcolor{charliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ Console.WriteLine(\$\textcolor{stringliteral}{"{}Object\ '\{matrix[i,\ j]\}'\ at\ position\ (\{i\},\ \{j\})"{}});}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00219}00219\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00220}00220\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00221}00221\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_map_8cs_source_l00222}00222\ \}}
+
+\end{DoxyCode}
