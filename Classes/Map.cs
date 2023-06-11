@@ -5,27 +5,37 @@ namespace JewellNS;
 public class Map
 {
   private Cell[,] arrayObj;
-  private int linha;
-  private int coluna;
+  private int line;
+  private int column;
 
-  public int getNumberOfColunas() { return this.coluna; }
-  public int getNumberOfLinhas() { return this.linha; }
+
+  public int getColumnsNumbers() { return this.column; }
+  public int getLinesNumbers() { return this.line; }
   public Map() { }
+  /// <summary>
+  /// Map e responsavel por definir o tamanho do mapa
+  /// </summary>
+  /// <param name="width">Parametro responsavel por definir a largura</param>
+  /// <param name="height">Parametro responsavel por definir a altura</param>
+  /// </summary>
+
   public Map(int width, int height)
   {
-    this.linha = width;
-    this.coluna = height;
+    this.line = width;
+    this.column = height;
     arrayObj = new Cell[width, height];
   }
   /// <summary>
   /// getCell é responsavel por retornar o objeto que é contido através dos parametros enviados
   /// </summary>
-  /// <param name="linha"> variavel que determina a linha da Cell</param>
-  /// <param name="coluna"> variavel que determina a coluna da Cell</param>
+  /// <param name="line"> variavel que determina a linha da Cell</param>
+  /// <param name="column"> variavel que determina a coluna da Cell</param>
   /// <returns> retorna o objeto da Cell</returns>
-  public Cell getCell(int linha, int coluna)
+
+  public Cell getCell(int line, int column)
   {
-    return arrayObj[linha, coluna];
+    return arrayObj[line, column];
+
   }
   /// <summary>
   ///  setCell seta um novo objeto dentro da linha e coluna passada no parâmetro
@@ -33,6 +43,7 @@ public class Map
   /// <param name="i">Posicao Y</param>
   /// <param name="j">posicao X</param>
   /// <param name="obj">objeto contendo a celula do mapa</param>
+
   public void setCell(int i, int j, Cell obj)
   {
     if (obj is Jewell jewell)
@@ -48,25 +59,17 @@ public class Map
       arrayObj[i, j] = Robot;
     }
   }
-  /// <summary>
-  /// Metodo responsavel por limpar a celula 
-  /// </summary>
-  /// <param name="i">Posicao X</param>
-  /// <param name="j">Posicao Y</param>
   public void removeCell(int i, int j)
   {
     arrayObj[i, j] = null;
   }
-  /// <summary>
-  /// Limpa o terminal e gera um mapa novo
-  /// </summary>
   public void PrintMap()
   {
     Console.Clear();
 
-    for (int i = 0; i < linha; i++)
+    for (int i = 0; i < line; i++)
     {
-      for (int j = 0; j < coluna; j++)
+      for (int j = 0; j < column; j++)
       {
         if (arrayObj[i, j] is null)
         {
@@ -88,14 +91,11 @@ public class Map
       Console.WriteLine();
     }
   }
-  /// <summary>
-  /// Encontra a posição de do robo para mostrar no mapa 
-  /// </summary>
   public void FindRobotPosition()
   {
-    for (int i = 0; i < linha; i++)
+    for (int i = 0; i < line; i++)
     {
-      for (int j = 0; j < coluna; j++)
+      for (int j = 0; j < column; j++)
       {
         if (arrayObj[i, j] is Robot Robot)
         {
