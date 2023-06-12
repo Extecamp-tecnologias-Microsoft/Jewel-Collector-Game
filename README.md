@@ -1,6 +1,8 @@
 # Jewell Collector 💎
 
-RA:ex182836 Nome: Gustavo Benedito dos Santos
+RA: ex182829 Nome: Eduardo Henrique Franco da Silva
+RA: ex182836 Nome: Gustavo Benedito dos Santos
+RA: ex117544 Nome: Gabriel Rodrigues
 
 ## Objetivo
 
