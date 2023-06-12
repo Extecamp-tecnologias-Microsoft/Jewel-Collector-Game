@@ -1,5 +1,9 @@
 # Jewell Collector 💎
 
+RA: ex182829 Nome: Eduardo Henrique Franco da Silva
+RA: ex182836 Nome: Gustavo Benedito dos Santos
+RA: ex117544 Nome: Gabriel Rodrigues
+
 ## Objetivo
 
 Desenvolva o minigame chamado Jewel Collector. O objetivo desse jogo é que um robô, controlado pelo teclado, se desloque por um mapa 2D de modo a desviar dos obstáculos e coletar todas as joias. 💎
