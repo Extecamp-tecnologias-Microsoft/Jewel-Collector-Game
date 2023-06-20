@@ -78,6 +78,9 @@ public class Map
   /// <param name="j"></param>
   public void removeCell(int i, int j)
   {
+    if(getCell(i, j) is Obstacle obstacle && obstacle.Symbol == " $$ "){
+      return;
+    }
     arrayObj[i, j] = null;
   }
   public void PrintMap()
