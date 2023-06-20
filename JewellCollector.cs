@@ -47,78 +47,18 @@ public class JewelCollector
     {
       Console.WriteLine(Robot.toString());
       Console.WriteLine("Enter the command: ");
-      string command = Console.ReadLine()!;
-
-      if (command.Equals("quit"))
-      {
-        running = false;
-      }
-      else if (command.Equals("w"))
-      {
-        try
-        {
-          map.FindRobotPosition();
-          Robot.moveToTop(map);
+      ConsoleKeyInfo command = Console.ReadKey(true);
+      
+      switch(command.Key.ToString()){
+        case "W": map.FindRobotPosition(); Robot.moveToTop(map); map.PrintMap(); break;
+        case "D": map.FindRobotPosition(); Robot.moveToRight(map); map.PrintMap(); break;
+        case "A": map.FindRobotPosition(); Robot.moveToLeft(map); map.PrintMap(); break;
+        case "S": map.FindRobotPosition(); Robot.moveToBottom(map); map.PrintMap(); break;
+        case "G": try {map.FindRobotPosition(); Robot.captureItem(map); map.PrintMap();}catch{
           map.PrintMap();
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e);
-        }
+          Console.WriteLine("Não existe joia ou arvore ao redor\n");
+        } break;
       }
-      else if (command.Equals("a"))
-      {
-        try
-        {
-          map.FindRobotPosition();
-          Robot.moveToLeft(map);
-          map.PrintMap();
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e);
-        }
-      }
-      else if (command.Equals("s"))
-      {
-        try
-        {
-          map.FindRobotPosition();
-          Robot.moveToBottom(map);
-          map.PrintMap();
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e);
-        }
-      }
-      else if (command.Equals("d"))
-      {
-        try
-        {
-          map.FindRobotPosition();
-          Robot.moveToRight(map);
-          map.PrintMap();
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine(e);
-        }
-      }
-      else if (command.Equals("g"))
-      {
-        try
-        {
-          map.FindRobotPosition();
-          Robot.captureItem(map);
-          map.PrintMap();
-        }
-        catch
-        {
-          map.PrintMap();
-          Console.WriteLine("Não existe joia ou arvore ao redor");
-        }
-      }
-    } while (running);
+    } while (running || !map.isDone());
   }
 }
