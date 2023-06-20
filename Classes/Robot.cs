@@ -30,7 +30,7 @@ public class Robot : Cell
   {
     if (this.getRobotColumn() > 0)
     {
-      if (map.getCell(getRobotLine(), getRobotColumn() - 1) is not Jewell or Obstacle)
+      if (!(map.getCell(getRobotLine(), getRobotColumn() - 1) is  Jewell or Obstacle))
       {
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
@@ -43,7 +43,7 @@ public class Robot : Cell
   {
     if (this.getRobotColumn() <= map.getColumnsNumbers())
     {
-      if (map.getCell(getRobotLine(), getRobotColumn() + 1) is not Jewell or Obstacle)
+      if (!(map.getCell(getRobotLine(), getRobotColumn() + 1) is Jewell or Obstacle))
       {
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
@@ -56,7 +56,7 @@ public class Robot : Cell
   {
     if (this.getRobotLine() > 0)
     {
-      if (map.getCell(getRobotLine() - 1, getRobotColumn()) is not Jewell or Obstacle)
+      if (!(map.getCell(getRobotLine() - 1, getRobotColumn()) is Jewell or Obstacle))
       {
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
@@ -69,7 +69,7 @@ public class Robot : Cell
   {
     if (this.getRobotLine() <= map.getLinesNumbers())
     {
-      if (map.getCell(getRobotLine() + 1, getRobotColumn()) is not Jewell or Obstacle)
+      if (!(map.getCell(getRobotLine() + 1, getRobotColumn()) is Jewell or Obstacle))
       {
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
