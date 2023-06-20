@@ -219,4 +219,13 @@ public class Map
       }
     }
   }
+
+  public bool isDone(){
+    for(int c = 0; c < this.column; c++){
+      for(int l = 0; l < this.line; l++){
+        if(arrayObj[c,l] is Jewell){return false;}
+      }
+    }
+    return true;
+  }
 }
