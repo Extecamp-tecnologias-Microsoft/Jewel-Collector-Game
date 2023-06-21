@@ -35,8 +35,8 @@ public class Map
   public Map(int width, int height, int level)
   {
     this.level = level;
-    this.line = width;
-    this.column = height;
+    this.line = width <= 30 ? width : 30;
+    this.column = height <= 30 ? height : 30;
     arrayObj = new Cell[width, height];
     if(level==1){
       generateFixed();
