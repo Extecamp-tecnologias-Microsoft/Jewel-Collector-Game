@@ -1,6 +1,6 @@
 namespace JewellNS;
 /// <summary>
-/// Classe responsavel por adicionar/remover obstaculos e joias pelo mapa, além de definir a posição do Robot
+/// Classe reponsável pelo Mapa.
 /// </summary>
 public class Map
 {
@@ -10,16 +10,28 @@ public class Map
   private int column;
   private int level;
 
+  /// <summary>
+  /// Retorna o número de Colunas
+  /// </summary>
   public int getColumnsNumbers() { return this.column; }
+  
+  /// <summary>
+  /// Retorna o número de Linhas
+  /// </summary>
   public int getLinesNumbers() { return this.line; }
+  
+  /// <summary>
+  /// Método Construtor da classe Map
+  /// </summary>
   public Map() { }
+  
   /// <summary>
   /// Map e responsavel por definir o tamanho do mapa
   /// </summary>
   /// <param name="width">Parametro responsavel por definir a largura</param>
   /// <param name="height">Parametro responsavel por definir a altura</param>
+  /// <param name="level">Parametro responsavel por definir o nível do jogo</param>
   /// </summary>
-
   public Map(int width, int height, int level)
   {
     this.level = level;
@@ -32,6 +44,7 @@ public class Map
       GenerateRandom();
     }
   }
+
   /// <summary>
   /// getCell é responsavel por retornar o objeto que é contido através dos parametros enviados
   /// </summary>
@@ -78,6 +91,10 @@ public class Map
     }
     arrayObj[i, j] = null;
   }
+
+  /// <summary>
+  /// PrintMap é responsavel por printar o tabuleiro na tela
+  /// </summary>
   public void PrintMap()
   {
     Console.Clear();
@@ -105,6 +122,10 @@ public class Map
       Console.WriteLine();
     }
   }
+
+  /// <summary>
+  /// FindRobotPosition é responsavel por encontrar a posição do Robot no mapa
+  /// </summary>
   public void FindRobotPosition()
   {
     for (int i = 0; i < line; i++)
@@ -120,7 +141,10 @@ public class Map
     }
   }
 
- private void generateFixed(){
+  /// <summary>
+  /// GenerateFixed é responsavel por gerar a primeira instância da partida, fase 1.
+  /// </summary>
+  private void generateFixed(){
     Jewell jr = new Jewell { Name = "red", Symbol = " JR ", Point = 100, LevelEnergy = 0 };
     Jewell jg = new Jewell { Name = "green", Symbol = " JG ", Point = 50, LevelEnergy = 0 };
     Jewell jb = new Jewell { Name = "blue", Symbol = " JB ", Point = 10, LevelEnergy = 5 };
@@ -149,8 +173,11 @@ public class Map
     this.setCell(1, 4, tree);
     this.PrintMap();
     this.FindRobotPosition();
- }
+  }
 
+  /// <summary>
+  /// GenerateRandom é responsavel por gerar a aleatoriamente posições de jóias e obstáculos após a 2ª fase
+  /// </summary>
   public void GenerateRandom(){
     Random random = new Random(1);
 
@@ -191,6 +218,9 @@ public class Map
     this.PrintMap();
   }
 
+  /// <summary>
+  /// isDone é responsavel por verificar se ainda existe jóias no tabuleiro
+  /// </summary>
   public bool isDone(){
     for(int c = 0; c < this.column; c++){
       for(int l = 0; l < this.line; l++){
