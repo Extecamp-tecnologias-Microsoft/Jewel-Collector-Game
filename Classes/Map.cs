@@ -177,7 +177,7 @@ public class Map
     for(int tree = 0; tree < 10; tree++){
       int xRandom = random.Next(0, this.line);
       int yRandom = random.Next(0, this.column);
-      this.setCell(xRandom,yRandom,new Obstacle { Name = "tree", Symbol = " $$ ", LevelEnergy = 0 });
+      this.setCell(xRandom,yRandom,new Obstacle { Name = "tree", Symbol = " $$ ", LevelEnergy = 3 });
     }
     for(int radioactive = 0; radioactive < 10; radioactive++){
       int xRandom = random.Next(0, this.line);
