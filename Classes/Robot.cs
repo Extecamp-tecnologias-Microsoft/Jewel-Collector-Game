@@ -1,6 +1,6 @@
 namespace JewellNS;
 /// <summary>
-/// Classe responsável pelo robo, sua interação com o mapa e os itens.
+/// Classe responsável pelo robo
 /// </summary>
 public class Robot : Cell
 {
@@ -9,12 +9,37 @@ public class Robot : Cell
   private Cell[] bagItems = new Cell[] { };
   private int RobotLine;
   private int RobotColumn;
+  
+  /// <summary>
+  /// Retorna o número da Coluna do Robot
+  /// </summary>
   public int getRobotLine() { return this.RobotLine; }
+  
+  /// <summary>
+  /// Retorna o número da Linha do Robot
+  /// </summary>
   public int getRobotColumn() { return this.RobotColumn; }
+  
+  /// <summary>
+  /// Define o número da Linha do Robot
+  /// <param name="line">Parametro responsavel por definir a linha do robot</param>
+  /// </summary>
   public void setRobotLine(int line) { this.RobotLine = line; }
+  
+  /// <summary>
+  /// Define o número da Coluna do Robot
+  /// <param name="column">Parametro responsavel por definir a coluna do robot</param>
+  /// </summary>
   public void setRobotColumn(int column) { this.RobotColumn = column; }
 
+  /// <summary>
+  /// Printa as infos do Robot
+  /// </summary>
   public string toString() { return $"Bag total items: {this.bagItems.Length} | Bag total value: {this.bagValue} | Energy: {this.LevelEnergy}"; }
+  
+  /// <summary>
+  /// Verifica nível de energia do Robot
+  /// </summary>
   public void verifyEnergyLevel()
   {
     Console.Clear();
@@ -23,6 +48,11 @@ public class Robot : Cell
       throw new Exception();
     }
   }
+
+  /// <summary>
+  /// Movimenta o robot para a esquerda
+  /// <param name="map">Recebe o map instanciado</param>
+  /// </summary>
   public void moveToLeft(Map map)
   {
     if (this.getRobotColumn() > 0)
@@ -36,6 +66,11 @@ public class Robot : Cell
       }
     }
   }
+
+  /// <summary>
+  /// Movimenta o robot para a direita
+  /// <param name="map">Recebe o map instanciado</param>
+  /// </summary>
   public void moveToRight(Map map)
   {
     if (this.getRobotColumn() <= map.getColumnsNumbers())
@@ -49,6 +84,11 @@ public class Robot : Cell
       }
     }
   }
+
+  /// <summary>
+  /// Movimenta o robot para cima
+  /// <param name="map">Recebe o map instanciado</param>
+  /// </summary>
   public void moveToTop(Map map)
   {
     if (this.getRobotLine() > 0)
@@ -62,6 +102,11 @@ public class Robot : Cell
       }
     }
   }
+
+  /// <summary>
+  /// Movimenta o robot para a baixo
+  /// <param name="map">Recebe o map instanciado</param>
+  /// </summary>
   public void moveToBottom(Map map)
   {
     if (this.getRobotLine() <= map.getLinesNumbers())
@@ -76,6 +121,10 @@ public class Robot : Cell
     }
   }
 
+  /// <summary>
+  ///  Captura o item, se existir
+  /// <param name="map">Recebe o map instanciado</param>
+  /// </summary>
   public void captureItem(Map map)
   {
     int playerLine = getRobotLine();
@@ -111,6 +160,7 @@ public class Robot : Cell
       map.removeCell(playerLine, columnPlayer - captureRange);
     }
   }
+
   /// <summary>
   /// Atualiza a quantidade de itens na bolsa e o valor da mesma 
   /// </summary>
@@ -125,6 +175,10 @@ public class Robot : Cell
     }
   }
 
+  /// <summary>
+  /// Atualiza o nível de Energia
+  /// <param name="cellObject">Celula atual do jogador</param>
+  /// </summary>
   private void updateEnergy(Cell cellObject)
   {
     LevelEnergy = LevelEnergy + cellObject.LevelEnergy;

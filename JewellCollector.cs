@@ -4,7 +4,7 @@ public class JewelCollector
 {
 
   /// <summary>
-  /// classe que a inicia o jogo 
+  /// Método que a inicia o jogo 
   /// </summary>
   /// <param name="args"></param>
   public static void Main(string[] args)
@@ -31,6 +31,11 @@ public class JewelCollector
     }
   }
 
+  /// <summary>
+  /// Método responsável pela jogabilidade
+  /// </summary>
+  /// <param name="Robot">Instância do Robot</param>
+  /// <param name="map">Instância do Map</param>
   public static bool Play(Robot Robot, Map map)
   {
     do
