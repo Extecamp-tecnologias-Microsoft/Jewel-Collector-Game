@@ -1,37 +1,50 @@
 namespace JewellNS;
 /// <summary>
-/// Classe responsavel por adicionar/remover obstaculos e joias pelo mapa, além de definir a posição do Robot
+/// Classe reponsável pelo Mapa.
 /// </summary>
 public class Map
 {
+  public Robot robot;
   private Cell[,] arrayObj;
   private int line;
   private int column;
-  private int numberItems;
-  public bool changeMap = false;
-  private bool phase1Completed = false;
-  private char[,] matrix;
-  private char[,] teste;
-  private Random random;
+  private int level;
 
-  public bool getphase1Completed() { return this.phase1Completed; }
+  /// <summary>
+  /// Retorna o número de Colunas
+  /// </summary>
   public int getColumnsNumbers() { return this.column; }
+  
+  /// <summary>
+  /// Retorna o número de Linhas
+  /// </summary>
   public int getLinesNumbers() { return this.line; }
-  public int getNumberItems() { return this.numberItems; }
+  
+  /// <summary>
+  /// Método Construtor da classe Map
+  /// </summary>
   public Map() { }
+  
   /// <summary>
   /// Map e responsavel por definir o tamanho do mapa
   /// </summary>
   /// <param name="width">Parametro responsavel por definir a largura</param>
   /// <param name="height">Parametro responsavel por definir a altura</param>
+  /// <param name="level">Parametro responsavel por definir o nível do jogo</param>
   /// </summary>
-
-  public Map(int width, int height)
+  public Map(int width, int height, int level)
   {
+    this.level = level;
     this.line = width;
     this.column = height;
     arrayObj = new Cell[width, height];
+    if(level==1){
+      generateFixed();
+    }else{
+      GenerateRandom();
+    }
   }
+
   /// <summary>
   /// getCell é responsavel por retornar o objeto que é contido através dos parametros enviados
   /// </summary>
@@ -54,15 +67,10 @@ public class Map
   {
     if (obj is Jewell jewell)
     {
-      numberItems++;
       arrayObj[i, j] = jewell;
     }
     else if (obj is Obstacle obstacle)
     {
-      if (obstacle.Name == "tree")
-      {
-        numberItems++;
-      }
       arrayObj[i, j] = obstacle;
     }
     else if (obj is Robot Robot)
@@ -78,43 +86,46 @@ public class Map
   /// <param name="j"></param>
   public void removeCell(int i, int j)
   {
+    if(getCell(i, j) is Obstacle obstacle && obstacle.Symbol == " $$ "){
+      return;
+    }
     arrayObj[i, j] = null;
   }
+
+  /// <summary>
+  /// PrintMap é responsavel por printar o tabuleiro na tela
+  /// </summary>
   public void PrintMap()
   {
-    if (changeMap)
+    Console.Clear();
+    for (int i = 0; i < line; i++)
     {
-      this.phase1Completed = true;
-      makeRandomMap(this.numberItems);
-    }
-    else
-    {
-      Console.Clear();
-      for (int i = 0; i < line; i++)
+      for (int j = 0; j < column; j++)
       {
-        for (int j = 0; j < column; j++)
+        if (arrayObj[i, j] is null)
         {
-          if (arrayObj[i, j] is null)
-          {
-            Console.Write(" -- ");
-          }
-          else if (arrayObj[i, j] is Jewell jewell)
-          {
-            Console.Write(jewell.Symbol);
-          }
-          else if (arrayObj[i, j] is Obstacle obstacle)
-          {
-            Console.Write(obstacle.Symbol);
-          }
-          else if (arrayObj[i, j] is Robot Robot)
-          {
-            Console.Write(Robot.Symbol);
-          }
+          Console.Write(" -- ");
         }
-        Console.WriteLine();
+        else if (arrayObj[i, j] is Jewell jewell)
+        {
+          Console.Write(jewell.Symbol);
+        }
+        else if (arrayObj[i, j] is Obstacle obstacle)
+        {
+          Console.Write(obstacle.Symbol);
+        }
+        else if (arrayObj[i, j] is Robot Robot)
+        {
+          Console.Write(Robot.Symbol);
+        }
       }
+      Console.WriteLine();
     }
   }
+
+  /// <summary>
+  /// FindRobotPosition é responsavel por encontrar a posição do Robot no mapa
+  /// </summary>
   public void FindRobotPosition()
   {
     for (int i = 0; i < line; i++)
@@ -130,93 +141,92 @@ public class Map
     }
   }
 
-  public void makeRandomMap(int numberItems)
-  {
-    Console.WriteLine("novo mapa aleatorio", numberItems);
-    this.line = numberItems;
-    this.column = numberItems;
-    matrix = new char[this.line, this.column];
-    random = new Random();
-    initializeRandomMap();
-  }
-
-  private void initializeRandomMap()
-  {
-    for (int i = 0; i < this.column; i++)
-    {
-      for (int j = 0; j < this.line; j++)
-      {
-        matrix[i, j] = '-';
-      }
-      printRandomMap();
-    }
-  }
-  public void AddObject()
-  {
+  /// <summary>
+  /// GenerateFixed é responsavel por gerar a primeira instância da partida, fase 1.
+  /// </summary>
+  private void generateFixed(){
     Jewell jr = new Jewell { Name = "red", Symbol = " JR ", Point = 100, LevelEnergy = 0 };
     Jewell jg = new Jewell { Name = "green", Symbol = " JG ", Point = 50, LevelEnergy = 0 };
     Jewell jb = new Jewell { Name = "blue", Symbol = " JB ", Point = 10, LevelEnergy = 5 };
     Obstacle water = new Obstacle { Name = "water", Symbol = " ## ", LevelEnergy = 0 };
     Obstacle tree = new Obstacle { Name = "tree", Symbol = " $$ ", LevelEnergy = 3 };
-    string[] listItem = { jr.Symbol, jg.Symbol, jb.Symbol, water.Symbol, tree.Symbol };
-    for (double i = 0; i < 0.1; i = i + 0.1)
-    {
-      int itemRandom = random.Next(0, listItem.Length);
-      char[] chosedItem = listItem[itemRandom].ToCharArray();
-      int x = random.Next(0, this.column);
-      int y = random.Next(0, this.line);
-      matrix[x, y] = chosedItem[2];
-    }
+    Robot robot = new Robot { Name = "robot", Symbol = " ME ", Point = 0, LevelEnergy = 5 };
+    this.robot = robot;
+    this.setCell(0, 0, robot);
+    this.setCell(1, 9, jr);
+    this.setCell(8, 8, jr);
+    this.setCell(9, 1, jg);
+    this.setCell(7, 6, jg);
+    this.setCell(3, 4, jb);
+    this.setCell(2, 1, jb);
+    this.setCell(5, 0, water);
+    this.setCell(5, 1, water);
+    this.setCell(5, 2, water);
+    this.setCell(5, 3, water);
+    this.setCell(5, 4, water);
+    this.setCell(5, 5, water);
+    this.setCell(5, 6, water);
+    this.setCell(5, 9, tree);
+    this.setCell(3, 9, tree);
+    this.setCell(8, 3, tree);
+    this.setCell(2, 5, tree);
+    this.setCell(1, 4, tree);
+    this.PrintMap();
+    this.FindRobotPosition();
   }
-  public void printRandomMap()
-  {
-    Console.Clear();
-    for (int i = 0; i < this.column; i++)
-    {
-      for (int j = 0; j < this.line; j++)
-      {
-        if (matrix[i, j] != '-')
-        {
-          switch (matrix[i, j])
-          {
-            case 'R':
-              Console.Write(" " + "JR" + " ");
-              break;
-            case 'G':
-              Console.Write(" " + "JG" + " ");
-              break;
-            case 'B':
-              Console.Write(" " + "JB" + " ");
-              break;
-            case '#':
-              Console.Write(" " + "##" + " ");
-              break;
-            case '$':
-              Console.Write(" " + "$$" + " ");
-              break;
-          }
-        }
-        else
-        {
-          Console.Write(" " + matrix[i, j] + matrix[i, j] + " ");
-        }
-      }
-      Console.WriteLine();
-      AddObject();
+
+  /// <summary>
+  /// GenerateRandom é responsavel por gerar a aleatoriamente posições de jóias e obstáculos após a 2ª fase
+  /// </summary>
+  public void GenerateRandom(){
+    Random random = new Random(1);
+
+    for(int blueJewell = 0; blueJewell < 3; blueJewell++){
+      int xRandom = random.Next(0, this.line);
+      int yRandom = random.Next(0, this.column);
+      this.setCell(xRandom,yRandom, new Jewell { Name = "blue", Symbol = " JB ", Point = 10, LevelEnergy = 5 });
     }
+    for(int greenJewell = 0; greenJewell < 3; greenJewell++){
+      int xRandom = random.Next(0, this.line);
+      int yRandom = random.Next(0, this.column);
+      this.setCell(xRandom,yRandom,new Jewell { Name = "green", Symbol = " JG ", Point = 50, LevelEnergy = 0 });
+    }
+    for(int redJewell = 0; redJewell < 3; redJewell++){
+      int xRandom = random.Next(0, this.line);
+      int yRandom = random.Next(0, this.column);
+      this.setCell(xRandom, yRandom, new Jewell { Name = "red", Symbol = " JR ", Point = 100, LevelEnergy = 0 });
+    }
+    for(int water = 0; water < 10; water++){
+      int xRandom = random.Next(0, this.line);
+      int yRandom = random.Next(0, this.column);
+      this.setCell(xRandom,yRandom,new Obstacle { Name = "water", Symbol = " ## ", LevelEnergy = 0 });
+    }
+    for(int tree = 0; tree < 10; tree++){
+      int xRandom = random.Next(0, this.line);
+      int yRandom = random.Next(0, this.column);
+      this.setCell(xRandom,yRandom,new Obstacle { Name = "tree", Symbol = " $$ ", LevelEnergy = 3 });
+    }
+    for(int radioactive = 0; radioactive < 10; radioactive++){
+      int xRandom = random.Next(0, this.line);
+      int yRandom = random.Next(0, this.column);
+      this.setCell(xRandom,yRandom,new Obstacle { Name = "radioactive", Symbol = " !! ", LevelEnergy = -5 });
+    }
+
+    Robot robot = new Robot { Name = "robot", Symbol = " ME ", Point = 0, LevelEnergy = 5 };
+    this.robot = robot;
+    this.setCell(0, 0, robot);
+    this.PrintMap();
   }
-  public void PrintObjectLocations()
-  {
-    Console.WriteLine("Object Locations:");
-    for (int i = 0; i < this.column; i++)
-    {
-      for (int j = 0; j < this.line; j++)
-      {
-        if (matrix[i, j] != '-')
-        {
-          Console.WriteLine($"Object '{matrix[i, j]}' at position ({i}, {j})");
-        }
+
+  /// <summary>
+  /// isDone é responsavel por verificar se ainda existe jóias no tabuleiro
+  /// </summary>
+  public bool isDone(){
+    for(int c = 0; c < this.column; c++){
+      for(int l = 0; l < this.line; l++){
+        if(arrayObj[c,l] is Jewell){return false;}
       }
     }
+    return true;
   }
 }
