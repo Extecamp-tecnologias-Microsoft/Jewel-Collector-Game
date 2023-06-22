@@ -179,7 +179,7 @@ public class Map
   /// GenerateRandom é responsavel por gerar a aleatoriamente posições de jóias e obstáculos após a 2ª fase
   /// </summary>
   public void GenerateRandom(){
-    Random random = new Random(1);
+    Random random = new Random(2);
 
     for(int blueJewell = 0; blueJewell < 3; blueJewell++){
       int xRandom = random.Next(0, this.line);
@@ -238,27 +238,26 @@ public class Map
     int robotLine = robot.getRobotLine();
     int robotColumn = robot.getRobotColumn();
     int captureRange = 1;
-    Obstacle obstacle = new Obstacle();
 
     if (IsValidCell(robotLine + captureRange, robotColumn) && 
-    (this.getCell(robotLine + captureRange, robotColumn) is Obstacle && obstacle.Symbol == " !! "))
+    (this.getCell(robotLine + captureRange, robotColumn) is Obstacle obstacle3 && obstacle3.Symbol == " !! "))
     {
-      robot.LevelEnergy = robot.LevelEnergy - obstacle.LevelEnergy;
+      robot.LevelEnergy = robot.LevelEnergy + obstacle3.LevelEnergy;
     }
     else if (IsValidCell(robotLine - captureRange, robotColumn) &&
-      (this.getCell(robotLine - captureRange, robotColumn) is Obstacle && obstacle.Symbol == " !! "))
+      (this.getCell(robotLine - captureRange, robotColumn) is Obstacle obstacle2 && obstacle2.Symbol == " !! "))
     {
-      robot.LevelEnergy = robot.LevelEnergy - obstacle.LevelEnergy;
+      robot.LevelEnergy = robot.LevelEnergy + obstacle2.LevelEnergy;
     }
     else if (IsValidCell(robotLine, robotColumn + captureRange) &&
-      (this.getCell(robotLine, robotColumn + captureRange) is Obstacle && obstacle.Symbol == " !! "))
+      (this.getCell(robotLine, robotColumn + captureRange) is Obstacle obstacle1 && obstacle1.Symbol == " !! "))
     {
-      robot.LevelEnergy = robot.LevelEnergy - obstacle.LevelEnergy;
+      robot.LevelEnergy = robot.LevelEnergy + obstacle1.LevelEnergy;
     }
     else if (IsValidCell(robotLine, robotColumn - captureRange) &&
-      (this.getCell(robotLine, robotColumn - captureRange) is Obstacle && obstacle.Symbol == " !! "))
+      (this.getCell(robotLine, robotColumn - captureRange) is Obstacle obstacle && obstacle.Symbol == " !! "))
     {
-      robot.LevelEnergy = robot.LevelEnergy - obstacle.LevelEnergy;
+      robot.LevelEnergy = robot.LevelEnergy + obstacle.LevelEnergy;
     }
   }
   
