@@ -230,6 +230,9 @@ public class Map
     return true;
   }
 
+  /// <summary>
+  /// RemoveEnergyFromAdjacentRadioactiveCells é responsavel por verificar se ainda existe obstaculo radioativo ao redor do jogador
+  /// </summary>
   public void RemoveEnergyFromAdjacentRadioactiveCells(Robot robot)
   {
     int robotLine = robot.getRobotLine();
@@ -258,6 +261,9 @@ public class Map
     }
   }
   
+  /// <summary>
+  /// IsValidCell é responsavel por verificar se é uma posição válida
+  /// </summary>
   private bool IsValidCell(int line, int column){
     int maxLine = this.getLinesNumbers();
     int maxColumn = this.getColumnsNumbers();
