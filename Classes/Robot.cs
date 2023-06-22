@@ -45,7 +45,7 @@ public class Robot : Cell
     Console.Clear();
     if (LevelEnergy <= 0)
     {
-      throw new Exception();
+      throw new RanOutOfEnergyException();
     }
   }
 
@@ -57,13 +57,23 @@ public class Robot : Cell
   {
     if (this.getRobotColumn() > 0)
     {
-      if (!(map.getCell(getRobotLine(), getRobotColumn() - 1) is  Jewell or Obstacle))
+      int targetLine = getRobotLine();
+      int targetColumn = getRobotColumn() - 1;
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
-        LevelEnergy--;
-        map.removeCell(getRobotLine(), getRobotColumn());
-        map.setCell(getRobotLine(), getRobotColumn() - 1, this);
-        verifyEnergyLevel();
+          // Remove energia das células adjacentes a obstáculos radioativos
+          map.RemoveEnergyFromAdjacentRadioactiveCells(this);
+          LevelEnergy--;
+          map.removeCell(getRobotLine(), getRobotColumn());
+          map.setCell(targetLine, targetColumn, this);
+          verifyEnergyLevel();
+      }else{
+        throw new OccupiedPositionException();
       }
+    }else{
+      throw new OutOfMapException();
     }
   }
 
@@ -75,13 +85,23 @@ public class Robot : Cell
   {
     if (this.getRobotColumn() <= map.getColumnsNumbers())
     {
-      if (!(map.getCell(getRobotLine(), getRobotColumn() + 1) is Jewell or Obstacle))
+      int targetLine = getRobotLine();
+      int targetColumn = getRobotColumn() + 1;
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
         LevelEnergy--;
+        // Remove energia das células adjacentes a obstáculos radioativos
+        map.RemoveEnergyFromAdjacentRadioactiveCells(this);
         map.removeCell(getRobotLine(), getRobotColumn());
         map.setCell(getRobotLine(), getRobotColumn() + 1, this);
         verifyEnergyLevel();
+      }else{
+        throw new OccupiedPositionException();
       }
+    }else{
+      throw new OutOfMapException();
     }
   }
 
@@ -93,13 +113,23 @@ public class Robot : Cell
   {
     if (this.getRobotLine() > 0)
     {
-      if (!(map.getCell(getRobotLine() - 1, getRobotColumn()) is Jewell or Obstacle))
+      int targetLine = getRobotLine() - 1;
+      int targetColumn = getRobotColumn();
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
+        // Remove energia das células adjacentes a obstáculos radioativos
+        map.RemoveEnergyFromAdjacentRadioactiveCells(this);
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
         map.setCell(getRobotLine() - 1, getRobotColumn(), this);
         verifyEnergyLevel();
+      }else{
+        throw new OccupiedPositionException();
       }
+    }else{
+      throw new OutOfMapException();
     }
   }
 
@@ -111,13 +141,23 @@ public class Robot : Cell
   {
     if (this.getRobotLine() <= map.getLinesNumbers())
     {
-      if (!(map.getCell(getRobotLine() + 1, getRobotColumn()) is Jewell or Obstacle))
+      int targetLine = getRobotLine() + 1;
+      int targetColumn = getRobotColumn();
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
+        // Remove energia das células adjacentes a obstáculos radioativos
+        map.RemoveEnergyFromAdjacentRadioactiveCells(this);
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
         map.setCell(getRobotLine() + 1, getRobotColumn(), this);
         verifyEnergyLevel();
+      }else{
+        throw new OccupiedPositionException();
       }
+    }else{
+      throw new OutOfMapException();
     }
   }
 
@@ -126,40 +166,62 @@ public class Robot : Cell
   /// <param name="map">Recebe o map instanciado</param>
   /// </summary>
   public void captureItem(Map map)
-  {
+{
     int playerLine = getRobotLine();
     int columnPlayer = getRobotColumn();
     int captureRange = 1;
 
-    if ((map.getCell(playerLine + captureRange, columnPlayer) is Jewell) ||
-        (map.getCell(playerLine + captureRange, columnPlayer) is Obstacle obstacle3) && obstacle3.Symbol == " $$ ")
+    if (isValidPosition(playerLine + captureRange, columnPlayer, map) && 
+      (map.getCell(playerLine + captureRange, columnPlayer) is Jewell ||
+      (map.getCell(playerLine + captureRange, columnPlayer) is Obstacle obstacle3 && obstacle3.Symbol == " $$ ")))
     {
       updateEnergy(map.getCell(playerLine + captureRange, columnPlayer));
       updateBag(map.getCell(playerLine + captureRange, columnPlayer));
       map.removeCell(playerLine + captureRange, columnPlayer);
     }
-    else if ((map.getCell(playerLine - captureRange, columnPlayer) is Jewell) ||
-    (map.getCell(playerLine - captureRange, columnPlayer) is Obstacle obstacle2) && obstacle2.Symbol == " $$ ")
+    else if (isValidPosition(playerLine - captureRange, columnPlayer, map) &&
+      (map.getCell(playerLine - captureRange, columnPlayer) is Jewell ||
+      (map.getCell(playerLine - captureRange, columnPlayer) is Obstacle obstacle2 && obstacle2.Symbol == " $$ ")))
     {
       updateEnergy(map.getCell(playerLine - captureRange, columnPlayer));
       updateBag(map.getCell(playerLine - captureRange, columnPlayer));
       map.removeCell(playerLine - captureRange, columnPlayer);
     }
-    else if ((map.getCell(playerLine, columnPlayer + captureRange) is Jewell) ||
-    (map.getCell(playerLine, columnPlayer + captureRange) is Obstacle obstacle1) && obstacle1.Symbol == " $$ ")
+    else if (isValidPosition(playerLine, columnPlayer + captureRange, map) &&
+      (map.getCell(playerLine, columnPlayer + captureRange) is Jewell ||
+      (map.getCell(playerLine, columnPlayer + captureRange) is Obstacle obstacle1 && obstacle1.Symbol == " $$ ")))
     {
       updateEnergy(map.getCell(playerLine, columnPlayer + captureRange));
       updateBag(map.getCell(playerLine, columnPlayer + captureRange));
       map.removeCell(playerLine, columnPlayer + captureRange);
     }
-    else if ((map.getCell(playerLine, columnPlayer - captureRange) is Jewell) ||
-    (map.getCell(playerLine, columnPlayer - captureRange) is Obstacle obstacle) && obstacle.Symbol == " $$ ")
+    else if (isValidPosition(playerLine, columnPlayer - captureRange, map) &&
+      (map.getCell(playerLine, columnPlayer - captureRange) is Jewell ||
+      (map.getCell(playerLine, columnPlayer - captureRange) is Obstacle obstacle && obstacle.Symbol == " $$ ")))
     {
       updateEnergy(map.getCell(playerLine, columnPlayer - captureRange));
       updateBag(map.getCell(playerLine, columnPlayer - captureRange));
       map.removeCell(playerLine, columnPlayer - captureRange);
     }
-  }
+    else
+    {
+        throw new DontExistItemToCapture();
+    }
+}
+
+  /// <summary>
+  /// Verifica se a posição a ser conferida, é válida
+  /// </summary>
+  /// <param name="line">Celula atual do jogador</param>
+  /// <param name="column">Celula atual do jogador</param>
+  /// <param name="map">Celula atual do jogador</param>
+private bool isValidPosition(int line, int column, Map map)
+{
+  int maxLine = map.getLinesNumbers();
+  int maxColumn = map.getColumnsNumbers();
+
+  return line >= 0 && line < maxLine && column >= 0 && column < maxColumn;
+}
 
   /// <summary>
   /// Atualiza a quantidade de itens na bolsa e o valor da mesma 
