@@ -57,12 +57,18 @@ public class Robot : Cell
   {
     if (this.getRobotColumn() > 0)
     {
-      if (!(map.getCell(getRobotLine(), getRobotColumn() - 1) is  Jewell or Obstacle))
+      int targetLine = getRobotLine();
+      int targetColumn = getRobotColumn() - 1;
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
-        LevelEnergy--;
-        map.removeCell(getRobotLine(), getRobotColumn());
-        map.setCell(getRobotLine(), getRobotColumn() - 1, this);
-        verifyEnergyLevel();
+          // Remove energia das células adjacentes a obstáculos radioativos
+          map.RemoveEnergyFromAdjacentRadioactiveCells(this);
+          LevelEnergy--;
+          map.removeCell(getRobotLine(), getRobotColumn());
+          map.setCell(targetLine, targetColumn, this);
+          verifyEnergyLevel();
       }else{
         throw new OccupiedPositionException();
       }
@@ -79,9 +85,15 @@ public class Robot : Cell
   {
     if (this.getRobotColumn() <= map.getColumnsNumbers())
     {
-      if (!(map.getCell(getRobotLine(), getRobotColumn() + 1) is Jewell or Obstacle))
+      int targetLine = getRobotLine();
+      int targetColumn = getRobotColumn() + 1;
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
         LevelEnergy--;
+        // Remove energia das células adjacentes a obstáculos radioativos
+        map.RemoveEnergyFromAdjacentRadioactiveCells(this);
         map.removeCell(getRobotLine(), getRobotColumn());
         map.setCell(getRobotLine(), getRobotColumn() + 1, this);
         verifyEnergyLevel();
@@ -101,8 +113,14 @@ public class Robot : Cell
   {
     if (this.getRobotLine() > 0)
     {
-      if (!(map.getCell(getRobotLine() - 1, getRobotColumn()) is Jewell or Obstacle))
+      int targetLine = getRobotLine() - 1;
+      int targetColumn = getRobotColumn();
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
+        // Remove energia das células adjacentes a obstáculos radioativos
+        map.RemoveEnergyFromAdjacentRadioactiveCells(this);
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
         map.setCell(getRobotLine() - 1, getRobotColumn(), this);
@@ -123,8 +141,14 @@ public class Robot : Cell
   {
     if (this.getRobotLine() <= map.getLinesNumbers())
     {
-      if (!(map.getCell(getRobotLine() + 1, getRobotColumn()) is Jewell or Obstacle))
+      int targetLine = getRobotLine() + 1;
+      int targetColumn = getRobotColumn();
+      Cell targetCell = map.getCell(targetLine, targetColumn);
+
+      if (!(targetCell is Jewell or Obstacle) || (targetCell.Symbol == " !! "))
       {
+        // Remove energia das células adjacentes a obstáculos radioativos
+        map.RemoveEnergyFromAdjacentRadioactiveCells(this);
         LevelEnergy--;
         map.removeCell(getRobotLine(), getRobotColumn());
         map.setCell(getRobotLine() + 1, getRobotColumn(), this);
@@ -193,10 +217,10 @@ public class Robot : Cell
   /// <param name="map">Celula atual do jogador</param>
 private bool isValidPosition(int line, int column, Map map)
 {
-    int maxLine = map.getLinesNumbers();
-    int maxColumn = map.getColumnsNumbers();
+  int maxLine = map.getLinesNumbers();
+  int maxColumn = map.getColumnsNumbers();
 
-    return line >= 0 && line < maxLine && column >= 0 && column < maxColumn;
+  return line >= 0 && line < maxLine && column >= 0 && column < maxColumn;
 }
 
   /// <summary>

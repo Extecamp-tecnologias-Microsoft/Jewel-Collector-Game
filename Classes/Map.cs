@@ -229,4 +229,39 @@ public class Map
     }
     return true;
   }
+
+  public void RemoveEnergyFromAdjacentRadioactiveCells(Robot robot)
+  {
+    int robotLine = robot.getRobotLine();
+    int robotColumn = robot.getRobotColumn();
+    int captureRange = 1;
+
+    if (IsValidCell(robotLine + captureRange, robotColumn) && 
+    (this.getCell(robotLine + captureRange, robotColumn) is Obstacle obstacle3 && obstacle3.Symbol == " !! "))
+    {
+      robot.LevelEnergy--;
+    }
+    else if (IsValidCell(robotLine - captureRange, robotColumn) &&
+      (this.getCell(robotLine - captureRange, robotColumn) is Obstacle obstacle2 && obstacle2.Symbol == " !! "))
+    {
+      robot.LevelEnergy--;
+    }
+    else if (IsValidCell(robotLine, robotColumn + captureRange) &&
+      (this.getCell(robotLine, robotColumn + captureRange) is Obstacle obstacle1 && obstacle1.Symbol == " !! "))
+    {
+      robot.LevelEnergy--;
+    }
+    else if (IsValidCell(robotLine, robotColumn - captureRange) &&
+      (this.getCell(robotLine, robotColumn - captureRange) is Obstacle obstacle && obstacle.Symbol == " !! "))
+    {
+      robot.LevelEnergy--;
+    }
+  }
+  
+  private bool IsValidCell(int line, int column){
+    int maxLine = this.getLinesNumbers();
+    int maxColumn = this.getColumnsNumbers();
+
+    return line >= 0 && line < maxLine && column >= 0 && column < maxColumn;
+  }
 }
